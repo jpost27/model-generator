@@ -1,4 +1,4 @@
-package com.fanduel.modelgenerator;
+package com.fanduel.modelgenerator.generator.sportradar;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Data
 @Accessors(chain = true)
-public class RequestMetadata {
+public class SportRadarRequestMetadata {
 
     private static final Map<String, String> tokenMap = Map.ofEntries(
             Map.entry("access_level", "trial"),
@@ -30,12 +30,12 @@ public class RequestMetadata {
     private String sampleUrl;
     private String variableUrl;
 
-    public RequestMetadata setHeaderName(String headerName) {
+    public SportRadarRequestMetadata setHeaderName(String headerName) {
         this.headerName = parseHeader(headerName);
         return this;
     }
 
-    public RequestMetadata setSampleUrl(String sampleUrl) {
+    public SportRadarRequestMetadata setSampleUrl(String sampleUrl) {
         sampleUrl = getUrl(sampleUrl);
         if (sampleUrl != null) {
             this.sampleUrl = sampleUrl;
@@ -43,7 +43,7 @@ public class RequestMetadata {
         return this;
     }
 
-    public RequestMetadata setVariableUrl(String variableUrl) {
+    public SportRadarRequestMetadata setVariableUrl(String variableUrl) {
         variableUrl = getUrl(variableUrl);
         if (variableUrl != null) {
             this.variableUrl = variableUrl;
