@@ -18,7 +18,7 @@ public class SportRadarRequestMetadata {
             Map.entry("year", String.valueOf(LocalDateTime.now().getYear() - 1)),
             Map.entry("month", String.valueOf(LocalDateTime.now().getMonthValue())),
             Map.entry("day", String.valueOf(LocalDateTime.now().getDayOfMonth())),
-            Map.entry("your_api_key", "2hy55br4nryzd444yv7fj9kn"),
+            Map.entry("your_api_key", "using_caching_gateway"),
             Map.entry("format", "json")
     );
     private static final String[] apiBasePaths = new String[] {

@@ -1,5 +1,6 @@
 package com.fanduel.modelgenerator;
 
+import com.fanduel.modelgenerator.cleaner.PackageCleaner;
 import com.fanduel.modelgenerator.generator.ModelGenerator;
 import com.fanduel.modelgenerator.generator.sportradar.SportRadarModelGenerator;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -12,6 +13,7 @@ import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
 import javax.validation.constraints.NotNull;
+import java.io.IOException;
 
 @ShellComponent
 @RequiredArgsConstructor
@@ -38,6 +40,11 @@ public class Commands {
     @ShellMethod(value = "Generate models from loaded urls.")
     private void generate(@NotNull @ShellOption(help = "Name of the package to generate the models under.") String sportRadarPackageName) {
         generator.generate(sportRadarPackageName);
+    }
+
+    @ShellMethod(value = "Generate models from loaded urls.")
+    private void clean(@NotNull @ShellOption(help = "Name of the package to clean the models under.") String sportRadarPackageName) throws IOException {
+        new PackageCleaner().clean(sportRadarPackageName);
     }
 
     @ShellMethod(value = "Setup webdriver.")

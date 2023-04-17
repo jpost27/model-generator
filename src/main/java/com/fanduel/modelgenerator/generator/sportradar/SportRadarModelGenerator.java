@@ -3,6 +3,7 @@ package com.fanduel.modelgenerator.generator.sportradar;
 import com.fanduel.modelgenerator.generator.ModelGenerator;
 import com.sun.codemodel.JCodeModel;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.jsonschema2pojo.DefaultGenerationConfig;
 import org.jsonschema2pojo.GenerationConfig;
 import org.jsonschema2pojo.Jackson2Annotator;
@@ -28,6 +29,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+@Slf4j
 @RequiredArgsConstructor
 public class SportRadarModelGenerator implements ModelGenerator {
 
@@ -64,6 +66,7 @@ public class SportRadarModelGenerator implements ModelGenerator {
 
         Set<String> remainingTokens = findUnmatchedParams();
         if (!remainingTokens.isEmpty()) {
+            log.warn("{} path variables could not be filled.", remainingTokens.size());
             System.out.println(remainingTokens);
         }
     }
@@ -72,7 +75,7 @@ public class SportRadarModelGenerator implements ModelGenerator {
     public void generate(String packageName) {
         requestMetadataList.forEach(requestMetadata -> {
             try {
-                Thread.sleep(2000L);
+                Thread.sleep(1000L);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -112,10 +115,10 @@ public class SportRadarModelGenerator implements ModelGenerator {
             throws IOException {
         URL inputJsonUrl = new URL(requestMetadata.getActionableUrl());
         File outputJavaClassDirectory = new File("src/main/java/");
-        packageName = "com.fanduel.modelgenerator.sportradar." +
-                        packageName +
-                        "." +
-                        requestMetadata.getHeaderName().toLowerCase(Locale.ROOT);
+        packageName = "com.fanduel.modelgenerator.generated.sportradar." +
+                packageName +
+                "." +
+                requestMetadata.getHeaderName().toLowerCase(Locale.ROOT);
         String javaClassName = requestMetadata.getHeaderName() + "Response";
 
         JCodeModel jcodeModel = new JCodeModel();
@@ -163,7 +166,7 @@ public class SportRadarModelGenerator implements ModelGenerator {
 
             jcodeModel.build(outputJavaClassDirectory);
         } catch (GenerationException e) {
-            System.out.println(inputJsonUrl.toString());
+            System.out.println(inputJsonUrl);
             e.printStackTrace();
         }
     }
