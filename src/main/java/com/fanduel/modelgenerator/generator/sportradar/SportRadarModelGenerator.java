@@ -85,6 +85,7 @@ public class SportRadarModelGenerator implements ModelGenerator {
                 throw new RuntimeException(e);
             }
         });
+        System.out.println("Generation completed.");
     }
 
     private Set<String> findUnmatchedParams() {

@@ -38,12 +38,8 @@ public class Commands {
     }
 
     @ShellMethod(value = "Generate models from loaded urls.")
-    private void generate(@NotNull @ShellOption(help = "Name of the package to generate the models under.") String sportRadarPackageName) {
+    private void generate(@NotNull @ShellOption(help = "Name of the package to generate the models under.") String sportRadarPackageName) throws IOException {
         generator.generate(sportRadarPackageName);
-    }
-
-    @ShellMethod(value = "Generate models from loaded urls.")
-    private void clean(@NotNull @ShellOption(help = "Name of the package to clean the models under.") String sportRadarPackageName) throws IOException {
         new PackageCleaner().clean(sportRadarPackageName);
     }
 

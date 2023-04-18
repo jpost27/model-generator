@@ -11,11 +11,15 @@ import org.apache.commons.io.FileUtils;
 
 import javax.annotation.processing.Generated;
 import javax.lang.model.element.Modifier;
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -25,14 +29,33 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class PackageCleaner {
 
     public void clean(String packageName) throws IOException {
+        System.out.println("Starting process to clean generated code.");
         File rootDirectory = new File("src/main/java/com/fanduel/modelgenerator/generated/sportradar/" + packageName);
         if (rootDirectory.listFiles() == null) {
             return;
+        }
+
+        List<File> allFiles = getAllFilesFromRootDirectory(rootDirectory);
+
+        // compile the java file
+        System.out.println("Compiling files under " + rootDirectory.getName() + "...");
+        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+        int result = compiler.run(null, null, null,
+                allFiles.stream()
+                        .filter(file -> file.getName().endsWith(".java"))
+                        .map(File::getAbsolutePath)
+                        .toArray((String[]::new)));
+        if (result == 0) {
+            System.out.println("Compilation successful.");
+        } else {
+            log.error("Compilation could not be completed, finished with exit code {}.", result);
+            throw new RuntimeException();
         }
 
         for (File file : rootDirectory.listFiles()) {
@@ -40,43 +63,47 @@ public class PackageCleaner {
                 clean(file);
             } catch (ClassNotFoundException e) {
                 log.error("Class {} cannot be accessed on the classpath. You will need to rebuild/restart the application to clean this folder.", e.getMessage());
+                e.printStackTrace();
                 return;
             }
         }
+        System.out.println("Code cleaning completed.");
     }
 
     private void clean(File rootDirectory) throws IOException, ClassNotFoundException {
         final String targetPackage = rootDirectory.getParentFile().getName() + '.' + rootDirectory.getName();
-        Map<String, List<Class<?>>> classMap = new HashMap<>();
-        Collection<File> filesToDelete = new LinkedList<>();
-        LinkedList<File> files = new LinkedList<>(List.of(rootDirectory));
-        while (!files.isEmpty()) {
-            File root = files.pop();
-            if (root.listFiles() == null) {
-                continue;
-            }
 
-            for (File file : root.listFiles()) {
-                if (file.isDirectory()) {
-                    files.addLast(file);
-                } else {
-                    String name = file.getName();
-                    if (name.endsWith(".java")) {
-                        String fileString = FileUtils.readFileToString(file, "UTF-8");
-                        String packageName = fileString.substring(fileString.indexOf("package ") + 8, fileString.indexOf(";"));
-                        if (name.contains("__")) {
-                            filesToDelete.add(file);
-                        }
-                        Class<?> clazz = Class.forName(packageName + "." + name.split("\\.")[0]);
-                        String key = clazz.getSimpleName().split("_")[0];
-                        if (!classMap.containsKey(key)) {
-                            classMap.put(key, new LinkedList<>());
-                        }
-                        classMap.get(key).add(clazz);
-                    }
+        List<File> allFiles = getAllFilesFromRootDirectory(rootDirectory);
+        URL url = new File("src/main/java/").toURI().toURL();
+        URLClassLoader classLoader = URLClassLoader.newInstance(new URL[]{url});
+
+        Collection<File> filesToDelete = allFiles
+                .stream()
+                .filter(file -> file.getName().contains("__")).collect(Collectors.toCollection(LinkedList::new));
+
+        Map<String, List<Class<?>>> classMap = new HashMap<>();
+        for (File file : allFiles) {
+            String name = file.getName();
+            if (name.endsWith(".java")) {
+                String fileString = FileUtils.readFileToString(file, "UTF-8");
+                String packageName = fileString.substring(fileString.indexOf("package ") + 8, fileString.indexOf(";"));
+
+                // load the new class
+                Class<?> clazz = classLoader.loadClass(packageName + "." + name.split("\\.")[0]);
+
+                String key = clazz.getSimpleName().split("_")[0];
+                if (!classMap.containsKey(key)) {
+                    classMap.put(key, new LinkedList<>());
                 }
+                classMap.get(key).add(clazz);
             }
         }
+        classLoader.close();
+
+        filesToDelete.addAll(getAllFilesFromRootDirectory(rootDirectory)
+                .stream()
+                .filter(file -> file.getName().endsWith(".class"))
+                .collect(Collectors.toList()));
 
         classMap.forEach((String baseClassName, List<Class<?>> classes) -> {
             TypeSpec.Builder typeSpecBuilder = TypeSpec
@@ -89,7 +116,8 @@ public class PackageCleaner {
                                     .addMember("value", "\"model-generator\"")
                                     .build());
             Map<String, Field> fieldMap = new HashMap<>();
-            classes.stream().flatMap(clazz -> Arrays.stream(clazz.getFields()))
+            classes.stream()
+                    .flatMap(clazz -> Arrays.stream(clazz.getFields()))
                     .forEach(field -> {
                         String fieldName = field.getName();
                         fieldMap.put(fieldName, field);
@@ -113,16 +141,37 @@ public class PackageCleaner {
                     .build();
 
             try {
-                javaFile.writeTo(System.out);
+                if (log.isTraceEnabled()) {
+                    javaFile.writeTo(System.out);
+                }
                 Path path = Paths.get("src/main/java/");
                 javaFile.writeTo(path);
                 for (File file : filesToDelete) {
-                    file.deleteOnExit();
+                    file.delete();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
+    }
+
+    private List<File> getAllFilesFromRootDirectory(File rootDirectory) {
+        LinkedList<File> files = new LinkedList<>(List.of(rootDirectory));
+        List<File> allFiles = new LinkedList<>();
+        while (!files.isEmpty()) {
+            File root = files.pop();
+            if (root.listFiles() == null) {
+                continue;
+            }
+            for (File file : root.listFiles()) {
+                if (file.isDirectory()) {
+                    files.addLast(file);
+                } else {
+                    allFiles.add(file);
+                }
+            }
+        }
+        return allFiles;
     }
 
     private Type getBaseTypeForField(Map<String, List<Class<?>>> classMap, Field field) {
@@ -135,7 +184,6 @@ public class PackageCleaner {
             return clazzOpt.get();
         }
         if (field.getGenericType() instanceof ParameterizedType) {
-            System.out.println(Arrays.toString(field.getType().getTypeParameters()));
             ParameterizedType stringListType = (ParameterizedType) field.getGenericType();
             Type[] genericTypeArr = stringListType.getActualTypeArguments();
             return new ParameterizedType() {
@@ -155,7 +203,7 @@ public class PackageCleaner {
 
                 @Override
                 public Type getOwnerType() {
-                    return field.getType();
+                    return null;
                 }
             };
         }
