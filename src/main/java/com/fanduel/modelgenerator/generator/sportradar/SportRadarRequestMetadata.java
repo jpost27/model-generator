@@ -2,7 +2,9 @@ package com.fanduel.modelgenerator.generator.sportradar;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.Map;
@@ -97,9 +99,12 @@ public class SportRadarRequestMetadata {
         value = value.replaceAll(".xml", ".json");
 
         for (String apiBasePath : apiBasePaths) {
-            value = value.replaceFirst(apiBasePath, "http://localhost:8099/");
+            value = value.replaceFirst(apiBasePath, "http://localhost:8080/sr/");
         }
-        return value;
+
+        return UriComponentsBuilder.fromUriString(value)
+                .replaceQueryParam("api_key")
+                .toUriString();
     }
 
     @Override

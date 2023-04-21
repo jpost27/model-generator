@@ -73,18 +73,20 @@ public class SportRadarModelGenerator implements ModelGenerator {
 
     @Override
     public void generate(String packageName) {
-        requestMetadataList.forEach(requestMetadata -> {
+//        for (int index = 0; index < 10; index++) {
+            requestMetadataList.stream().forEach(requestMetadata -> {
             try {
                 Thread.sleep(1000L);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            try {
-                convertJsonToJavaClass(requestMetadata, packageName);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+                try {
+                    convertJsonToJavaClass(requestMetadata, packageName);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+//        }
         System.out.println("Generation completed.");
     }
 
@@ -165,7 +167,7 @@ public class SportRadarModelGenerator implements ModelGenerator {
         try {
             mapper.generate(jcodeModel, javaClassName, packageName, inputJsonUrl);
 
-            jcodeModel.build(outputJavaClassDirectory);
+//            jcodeModel.build(outputJavaClassDirectory);
         } catch (GenerationException e) {
             System.out.println(inputJsonUrl);
             e.printStackTrace();
