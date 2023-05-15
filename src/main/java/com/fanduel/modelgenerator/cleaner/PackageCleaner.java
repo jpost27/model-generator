@@ -113,7 +113,7 @@ public class PackageCleaner {
                     .addAnnotation(
                             AnnotationSpec
                                     .builder(Generated.class)
-                                    .addMember("value", "\"model-generator\"")
+                                    .addMember("value", "\"fanduel-model-generator\"")
                                     .build());
             Map<String, Field> fieldMap = new HashMap<>();
             classes.stream()

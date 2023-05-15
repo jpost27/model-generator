@@ -76,7 +76,7 @@ public class SportRadarModelGenerator implements ModelGenerator {
 //        for (int index = 0; index < 10; index++) {
             requestMetadataList.stream().forEach(requestMetadata -> {
             try {
-                Thread.sleep(1000L);
+                Thread.sleep(100L);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -166,8 +166,7 @@ public class SportRadarModelGenerator implements ModelGenerator {
         SchemaMapper mapper = new SchemaMapper(new RuleFactory(config, new Jackson2Annotator(config), new SchemaStore()), new SchemaGenerator());
         try {
             mapper.generate(jcodeModel, javaClassName, packageName, inputJsonUrl);
-
-//            jcodeModel.build(outputJavaClassDirectory);
+            jcodeModel.build(outputJavaClassDirectory);
         } catch (GenerationException e) {
             System.out.println(inputJsonUrl);
             e.printStackTrace();
