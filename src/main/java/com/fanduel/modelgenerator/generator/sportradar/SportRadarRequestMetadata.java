@@ -99,7 +99,7 @@ public class SportRadarRequestMetadata {
         value = value.replaceAll(".xml", ".json");
 
         for (String apiBasePath : apiBasePaths) {
-            value = value.replaceFirst(apiBasePath, "http://localhost:8080/sr/");
+            value = value.replaceFirst(apiBasePath, "http://localhost:8090/sr/");
         }
 
         return UriComponentsBuilder.fromUriString(value)

@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
+import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 import lombok.Data;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 
@@ -34,9 +36,17 @@ import java.util.stream.Collectors;
 @Slf4j
 public class PackageCleaner {
 
+    private final String outputDirectory;
+    private final String basePackage;
+
+    public PackageCleaner(String outputDirectory, String basePackage) {
+        this.outputDirectory = outputDirectory;
+        this.basePackage = basePackage;
+    }
+
     public void clean(String packageName) throws IOException {
         System.out.println("Starting process to clean generated code.");
-        File rootDirectory = new File("src/main/java/com/fanduel/modelgenerator/generated/sportradar/" + packageName);
+        File rootDirectory = new File(getBasePackagePath() + "/" + packageName);
         if (rootDirectory.listFiles() == null) {
             return;
         }
@@ -70,11 +80,15 @@ public class PackageCleaner {
         System.out.println("Code cleaning completed.");
     }
 
+    private String getBasePackagePath() {
+        return outputDirectory + basePackage.replaceAll("\\.", "/");
+    }
+
     private void clean(File rootDirectory) throws IOException, ClassNotFoundException {
         final String targetPackage = rootDirectory.getParentFile().getName() + '.' + rootDirectory.getName();
 
         List<File> allFiles = getAllFilesFromRootDirectory(rootDirectory);
-        URL url = new File("src/main/java/").toURI().toURL();
+        URL url = new File(outputDirectory).toURI().toURL();
         URLClassLoader classLoader = URLClassLoader.newInstance(new URL[]{url});
 
         Collection<File> filesToDelete = allFiles
@@ -109,7 +123,7 @@ public class PackageCleaner {
             TypeSpec.Builder typeSpecBuilder = TypeSpec
                     .classBuilder(baseClassName)
                     .addModifiers(Modifier.PUBLIC)
-                    .addAnnotation(Data.class)
+                    .addAnnotation(Setter.class)
                     .addAnnotation(
                             AnnotationSpec
                                     .builder(Generated.class)
@@ -123,8 +137,9 @@ public class PackageCleaner {
                         fieldMap.put(fieldName, field);
                     });
             fieldMap.forEach((fieldName, field) -> {
+                Type fieldType = getBaseTypeForField(classMap, field);
                 FieldSpec.Builder fieldSpecBuilder = FieldSpec
-                        .builder(getBaseTypeForField(classMap, field), fieldName)
+                        .builder(fieldType, fieldName)
                         .addModifiers(Modifier.PRIVATE);
                 Arrays.stream(field.getDeclaredAnnotations()).forEach(annotation ->
                         fieldSpecBuilder.addAnnotation(
@@ -133,10 +148,38 @@ public class PackageCleaner {
                                         .addMember("value", '"' + ((JsonProperty) annotation).value() + '"')
                                         .build()
                         ));
-                typeSpecBuilder.addField(fieldSpecBuilder.build());
+                FieldSpec fieldSpec = fieldSpecBuilder.build();
+                typeSpecBuilder.addField(fieldSpec);
+                MethodSpec.Builder methodSpecBuilder = MethodSpec.methodBuilder("get" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1));
+                methodSpecBuilder.addModifiers(Modifier.PUBLIC);
+
+                if (field.getType().equals(List.class)) {
+                    methodSpecBuilder.returns(fieldType);
+                    methodSpecBuilder.addCode("return Optional.ofNullable(" + fieldName + ").orElse(Collections.emptyList());");
+                } else {
+                    methodSpecBuilder.returns(new ParameterizedType() {
+                        @Override
+                        public Type[] getActualTypeArguments() {
+                            return new Type[]{fieldType};
+                        }
+
+                        @Override
+                        public Type getRawType() {
+                            return Optional.class;
+                        }
+
+                        @Override
+                        public Type getOwnerType() {
+                            return Optional.class;
+                        }
+                    });
+                    methodSpecBuilder.addCode("return Optional.ofNullable(" + fieldName + ");");
+                }
+                MethodSpec methodSpec = methodSpecBuilder.build();
+                typeSpecBuilder.addMethod(methodSpec);
             });
             JavaFile javaFile = JavaFile
-                    .builder("com.fanduel.modelgenerator.generated.sportradar." + targetPackage, typeSpecBuilder.build())
+                    .builder(basePackage + "." + targetPackage, typeSpecBuilder.build())
                     .indent("    ")
                     .build();
 
@@ -144,7 +187,7 @@ public class PackageCleaner {
                 if (log.isTraceEnabled()) {
                     javaFile.writeTo(System.out);
                 }
-                Path path = Paths.get("src/main/java/");
+                Path path = Paths.get(outputDirectory);
                 javaFile.writeTo(path);
                 for (File file : filesToDelete) {
                     file.delete();

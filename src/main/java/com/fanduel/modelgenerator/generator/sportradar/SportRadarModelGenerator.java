@@ -2,6 +2,7 @@ package com.fanduel.modelgenerator.generator.sportradar;
 
 import com.fanduel.modelgenerator.generator.ModelGenerator;
 import com.sun.codemodel.JCodeModel;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jsonschema2pojo.DefaultGenerationConfig;
@@ -30,13 +31,20 @@ import java.util.Locale;
 import java.util.Set;
 
 @Slf4j
-@RequiredArgsConstructor
 public class SportRadarModelGenerator implements ModelGenerator {
 
     private final String docsUrl;
     private final List<SportRadarRequestMetadata> requestMetadataList = new LinkedList<>();
+    @Getter
+    private final String outputDirectory = "src/main/java/";
+    @Getter
+    private final String basePackage = "com.fanduel.modelgenerator.generated.sportradar";
 
-    @Override
+    public SportRadarModelGenerator(String docsUrl) {
+        this.docsUrl = docsUrl;
+        collectDocumentationUrls();
+    }
+
     public void collectDocumentationUrls() {
         WebDriver webDriver = new SafariDriver();
         webDriver.get(docsUrl);
@@ -76,7 +84,7 @@ public class SportRadarModelGenerator implements ModelGenerator {
 //        for (int index = 0; index < 10; index++) {
             requestMetadataList.stream().forEach(requestMetadata -> {
             try {
-                Thread.sleep(100L);
+                Thread.sleep(1000L);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -117,10 +125,8 @@ public class SportRadarModelGenerator implements ModelGenerator {
     private void convertJsonToJavaClass(SportRadarRequestMetadata requestMetadata, String packageName)
             throws IOException {
         URL inputJsonUrl = new URL(requestMetadata.getActionableUrl());
-        File outputJavaClassDirectory = new File("src/main/java/");
-        packageName = "com.fanduel.modelgenerator.generated.sportradar." +
-                packageName +
-                "." +
+        File outputJavaClassDirectory = new File(outputDirectory);
+        packageName = basePackage + "." + packageName + "." +
                 requestMetadata.getHeaderName().toLowerCase(Locale.ROOT);
         String javaClassName = requestMetadata.getHeaderName() + "Response";
 
@@ -147,10 +153,10 @@ public class SportRadarModelGenerator implements ModelGenerator {
                 return false;
             }
 
-            @Override
-            public boolean isIncludeAdditionalProperties() {
-                return false;
-            }
+//            @Override
+//            public boolean isIncludeAdditionalProperties() {
+//                return false;
+//            }
 
             @Override
             public boolean isIncludeHashcodeAndEquals() {

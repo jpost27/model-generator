@@ -2,6 +2,7 @@ package com.fanduel.modelgenerator;
 
 import com.fanduel.modelgenerator.cleaner.PackageCleaner;
 import com.fanduel.modelgenerator.generator.ModelGenerator;
+import com.fanduel.modelgenerator.generator.manual.ManualModelGenerator;
 import com.fanduel.modelgenerator.generator.sportradar.SportRadarModelGenerator;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +30,11 @@ public class Commands {
             log.warn("Your provided url doesn't contain 'sportradar'. Seems sketchy but we'll try to roll with it...");
         }
         generator = new SportRadarModelGenerator(docsUrl);
-        generator.collectDocumentationUrls();
+    }
+
+    @ShellMethod(value = "Initialize manual generator.")
+    public void manual(@NotNull @ShellOption(help = "Name of the request.") String requestName) {
+        generator = new ManualModelGenerator(requestName);
     }
 
     @ShellMethod(value = "Print currently loaded URL metadata.")
@@ -38,9 +43,9 @@ public class Commands {
     }
 
     @ShellMethod(value = "Generate models from loaded urls.")
-    private void generate(@NotNull @ShellOption(help = "Name of the package to generate the models under.") String sportRadarPackageName) throws IOException {
-        generator.generate(sportRadarPackageName);
-        new PackageCleaner().clean(sportRadarPackageName);
+    private void generate(@NotNull @ShellOption(help = "Name of the package to generate the models under.") String packageName) throws IOException {
+        generator.generate(packageName);
+        new PackageCleaner(generator.getOutputDirectory(), generator.getBasePackage()).clean(packageName);
     }
 
     @ShellMethod(value = "Setup webdriver.")
