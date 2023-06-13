@@ -8,6 +8,7 @@ import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 import lombok.Data;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 
@@ -26,6 +27,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -124,6 +126,9 @@ public class PackageCleaner {
                     .classBuilder(baseClassName)
                     .addModifiers(Modifier.PUBLIC)
                     .addAnnotation(Setter.class)
+                    .addAnnotation(AnnotationSpec.builder(Accessors.class)
+                            .addMember("chain", "true")
+                            .build())
                     .addAnnotation(
                             AnnotationSpec
                                     .builder(Generated.class)
@@ -155,7 +160,7 @@ public class PackageCleaner {
 
                 if (field.getType().equals(List.class)) {
                     methodSpecBuilder.returns(fieldType);
-                    methodSpecBuilder.addCode("return Optional.ofNullable(" + fieldName + ").orElse(Collections.emptyList());");
+                    methodSpecBuilder.addCode("return Optional.ofNullable(" + fieldName + ").orElse($T.emptyList());", Collections.class);
                 } else {
                     methodSpecBuilder.returns(new ParameterizedType() {
                         @Override
