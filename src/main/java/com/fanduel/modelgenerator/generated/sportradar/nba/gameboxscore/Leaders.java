@@ -3,6 +3,7 @@ package com.fanduel.modelgenerator.generated.sportradar.nba.gameboxscore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.processing.Generated;
 import lombok.Setter;
 import lombok.experimental.Accessors;

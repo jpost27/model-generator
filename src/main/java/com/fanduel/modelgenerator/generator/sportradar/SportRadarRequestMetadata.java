@@ -6,8 +6,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Data
 @Accessors(chain = true)
@@ -80,6 +83,14 @@ public class SportRadarRequestMetadata {
         return null;
     }
 
+    public List<String> getPathParams() {
+        String[] urlArr = variableUrl.split("[?]", 2);
+        return Arrays.stream(urlArr[0].split("/"))
+                .filter(path -> path.startsWith("{") && path.endsWith("}"))
+                .map(path -> path.substring(1, path.length() - 1))
+                .collect(Collectors.toList());
+    }
+
     public String parseHeader(String key) {
         String[] keyTokens = key.split("[()\\s+\\-]");
         for (int index = 0; index < keyTokens.length; index++) {
@@ -98,12 +109,12 @@ public class SportRadarRequestMetadata {
         }
         value = value.replaceAll(".xml", ".json");
 
-        for (String apiBasePath : apiBasePaths) {
-            value = value.replaceFirst(apiBasePath, "https://goalpost-gateway.int.use1.pdm-dev.com/sr/");
-        }
+//        for (String apiBasePath : apiBasePaths) {
+//            value = value.replaceFirst(apiBasePath, "https://goalpost-gateway.int.use1.pdm-dev.com/sr/");
+//        }
 
         return UriComponentsBuilder.fromUriString(value)
-                .replaceQueryParam("api_key")
+                .replaceQueryParam("api_key", "zj3xydpsbrzq77yeum4pp5be")
                 .toUriString();
     }
 

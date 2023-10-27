@@ -1,9 +1,16 @@
 package com.fanduel.modelgenerator.generator.sportradar;
 
 import com.fanduel.modelgenerator.generator.ModelGenerator;
+import com.fanduel.modelgenerator.utils.FileUtils;
+import com.google.common.base.CaseFormat;
+import com.squareup.javapoet.AnnotationSpec;
+import com.squareup.javapoet.JavaFile;
+import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.TypeSpec;
 import com.sun.codemodel.JCodeModel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 import org.jsonschema2pojo.DefaultGenerationConfig;
 import org.jsonschema2pojo.GenerationConfig;
@@ -20,15 +27,25 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import reactor.core.publisher.Mono;
 
+import javax.annotation.processing.Generated;
+import javax.lang.model.element.Modifier;
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class SportRadarModelGenerator implements ModelGenerator {
@@ -81,21 +98,121 @@ public class SportRadarModelGenerator implements ModelGenerator {
 
     @Override
     public void generate(String packageName) {
-//        for (int index = 0; index < 10; index++) {
-            requestMetadataList.stream().forEach(requestMetadata -> {
+        requestMetadataList.stream()
+                .filter(requestMetadata ->
+                        !new File(outputDirectory
+                                + basePackage.replaceAll("\\.", "/")
+                                + "/"
+                                + packageName
+                                + "/"
+                                + requestMetadata.getHeaderName().toLowerCase()
+                                + "/"
+                                + requestMetadata.getHeaderName()
+                                + "Response.java").exists())
+                .forEach(requestMetadata -> {
             try {
                 Thread.sleep(1000L);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-                try {
-                    convertJsonToJavaClass(requestMetadata, packageName);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-//        }
+            try {
+                convertJsonToJavaClass(requestMetadata, packageName);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        File rootDirectory = new File(outputDirectory + basePackage.replaceAll("\\.", "/") + "/" + packageName);
+        List<File> allFiles = FileUtils.getAllFilesFromRootDirectory(rootDirectory);
+
+        // compile the java file
+        System.out.println("Compiling files under " + rootDirectory.getName());
+        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+        int result = compiler.run(null, null, null,
+                allFiles.stream()
+                        .filter(file -> file.getName().endsWith(".java"))
+                        .map(File::getAbsolutePath)
+                        .toArray((String[]::new)));
+        if (result == 0) {
+            System.out.println("Compilation successful.");
+        } else {
+            log.error("Compilation could not be completed, finished with exit code {}.", result);
+            throw new RuntimeException();
+        }
+        System.out.println("Generating client interface.");
+        generateClientInterface(requestMetadataList, packageName);
         System.out.println("Generation completed.");
+    }
+
+    private void generateClientInterface(List<SportRadarRequestMetadata> requestMetadataList, String packageName) {
+        List<MethodSpec> methodSpecs = requestMetadataList
+                .stream()
+                .map(requestMetadata -> {
+                    String typeName = requestMetadata.getHeaderName();
+                    Class<?> baseClass;
+                    try {
+                        baseClass = ClassLoader.getSystemClassLoader().loadClass(
+                                basePackage + "." + packageName + "." + typeName.toLowerCase() + "." + typeName + "Response");
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    MethodSpec.Builder methodSpecBuilder = MethodSpec
+                            .methodBuilder("get"
+                                    + Character.toUpperCase(typeName.charAt(0))
+                                    + typeName.substring(1))
+                            .addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
+                            .returns(new ParameterizedType() {
+                                @Override
+                                public Type[] getActualTypeArguments() {
+                                    return new Type[]{baseClass};
+                                }
+
+                                @Override
+                                public Type getRawType() {
+                                    return Mono.class;
+                                }
+
+                                @Override
+                                public Type getOwnerType() {
+                                    return null;
+                                }
+                            });
+                    requestMetadata.getPathParams()
+                            .stream()
+                            .map(param -> CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, param))
+                            .filter(param -> !Set.of("accessLevel", "version", "languageCode").contains(param))
+                            .forEach(param ->
+                            methodSpecBuilder.addParameter(
+                                    Set.of("year", "month", "day").contains(param) ?
+                                            Integer.class : String.class,
+                                    param));
+                    return methodSpecBuilder.build();
+                })
+                .collect(Collectors.toList());
+        TypeSpec.Builder interfaceBuilder = TypeSpec
+                .interfaceBuilder("SportRadarClient")
+                .addModifiers(Modifier.PUBLIC)
+                .addAnnotation(
+                        AnnotationSpec
+                                .builder(Generated.class)
+                                .addMember("value", "\"fanduel-model-generator\"")
+                                .build());
+        methodSpecs.forEach(interfaceBuilder::addMethod);
+
+        JavaFile javaFile = JavaFile
+                .builder(basePackage + "." + packageName, interfaceBuilder.build())
+                .indent("    ")
+                .build();
+
+        try {
+            if (log.isTraceEnabled()) {
+                javaFile.writeTo(System.out);
+            }
+            Path path = Paths.get(outputDirectory);
+            javaFile.writeTo(path);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private Set<String> findUnmatchedParams() {

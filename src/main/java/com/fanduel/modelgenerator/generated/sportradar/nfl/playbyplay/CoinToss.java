@@ -1,7 +1,5 @@
 package com.fanduel.modelgenerator.generated.sportradar.nfl.playbyplay;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Optional;
 import javax.annotation.processing.Generated;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -12,17 +10,4 @@ import lombok.experimental.Accessors;
 )
 @Generated("fanduel-model-generator")
 public class CoinToss {
-    @JsonProperty("away")
-    private Away away;
-
-    @JsonProperty("home")
-    private Home home;
-
-    public Optional<Away> getAway() {
-        return Optional.ofNullable(away);
-    }
-
-    public Optional<Home> getHome() {
-        return Optional.ofNullable(home);
-    }
 }

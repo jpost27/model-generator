@@ -1,5 +1,6 @@
 package com.fanduel.modelgenerator.cleaner;
 
+import com.fanduel.modelgenerator.utils.FileUtils;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.FieldSpec;
@@ -10,7 +11,6 @@ import lombok.Data;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.FileUtils;
 
 import javax.annotation.processing.Generated;
 import javax.lang.model.element.Modifier;
@@ -38,7 +38,8 @@ import java.util.stream.Collectors;
 @Slf4j
 public class PackageCleaner {
 
-    private final String outputDirectory;
+    private final String
+            outputDirectory;
     private final String basePackage;
 
     public PackageCleaner(String outputDirectory, String basePackage) {
@@ -51,23 +52,6 @@ public class PackageCleaner {
         File rootDirectory = new File(getBasePackagePath() + "/" + packageName);
         if (rootDirectory.listFiles() == null) {
             return;
-        }
-
-        List<File> allFiles = getAllFilesFromRootDirectory(rootDirectory);
-
-        // compile the java file
-        System.out.println("Compiling files under " + rootDirectory.getName() + "...");
-        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-        int result = compiler.run(null, null, null,
-                allFiles.stream()
-                        .filter(file -> file.getName().endsWith(".java"))
-                        .map(File::getAbsolutePath)
-                        .toArray((String[]::new)));
-        if (result == 0) {
-            System.out.println("Compilation successful.");
-        } else {
-            log.error("Compilation could not be completed, finished with exit code {}.", result);
-            throw new RuntimeException();
         }
 
         for (File file : rootDirectory.listFiles()) {
@@ -89,7 +73,7 @@ public class PackageCleaner {
     private void clean(File rootDirectory) throws IOException, ClassNotFoundException {
         final String targetPackage = rootDirectory.getParentFile().getName() + '.' + rootDirectory.getName();
 
-        List<File> allFiles = getAllFilesFromRootDirectory(rootDirectory);
+        List<File> allFiles = FileUtils.getAllFilesFromRootDirectory(rootDirectory);
         URL url = new File(outputDirectory).toURI().toURL();
         URLClassLoader classLoader = URLClassLoader.newInstance(new URL[]{url});
 
@@ -101,7 +85,7 @@ public class PackageCleaner {
         for (File file : allFiles) {
             String name = file.getName();
             if (name.endsWith(".java")) {
-                String fileString = FileUtils.readFileToString(file, "UTF-8");
+                String fileString = org.apache.commons.io.FileUtils.readFileToString(file, "UTF-8");
                 String packageName = fileString.substring(fileString.indexOf("package ") + 8, fileString.indexOf(";"));
 
                 // load the new class
@@ -116,11 +100,19 @@ public class PackageCleaner {
         }
         classLoader.close();
 
-        filesToDelete.addAll(getAllFilesFromRootDirectory(rootDirectory)
+        filesToDelete.addAll(FileUtils.getAllFilesFromRootDirectory(rootDirectory)
                 .stream()
                 .filter(file -> file.getName().endsWith(".class"))
                 .collect(Collectors.toList()));
 
+        cleanUpModelClasses(classMap, targetPackage);
+
+        for (File file : filesToDelete) {
+            file.delete();
+        }
+    }
+
+    private void cleanUpModelClasses(Map<String, List<Class<?>>> classMap, String targetPackage) {
         classMap.forEach((String baseClassName, List<Class<?>> classes) -> {
             TypeSpec.Builder typeSpecBuilder = TypeSpec
                     .classBuilder(baseClassName)
@@ -194,32 +186,10 @@ public class PackageCleaner {
                 }
                 Path path = Paths.get(outputDirectory);
                 javaFile.writeTo(path);
-                for (File file : filesToDelete) {
-                    file.delete();
-                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
-    }
-
-    private List<File> getAllFilesFromRootDirectory(File rootDirectory) {
-        LinkedList<File> files = new LinkedList<>(List.of(rootDirectory));
-        List<File> allFiles = new LinkedList<>();
-        while (!files.isEmpty()) {
-            File root = files.pop();
-            if (root.listFiles() == null) {
-                continue;
-            }
-            for (File file : root.listFiles()) {
-                if (file.isDirectory()) {
-                    files.addLast(file);
-                } else {
-                    allFiles.add(file);
-                }
-            }
-        }
-        return allFiles;
     }
 
     private Type getBaseTypeForField(Map<String, List<Class<?>>> classMap, Field field) {

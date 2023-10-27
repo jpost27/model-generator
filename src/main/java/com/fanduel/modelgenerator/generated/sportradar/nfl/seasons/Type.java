@@ -1,8 +1,5 @@
 package com.fanduel.modelgenerator.generated.sportradar.nfl.seasons;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.lang.String;
-import java.util.Optional;
 import javax.annotation.processing.Generated;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -13,10 +10,4 @@ import lombok.experimental.Accessors;
 )
 @Generated("fanduel-model-generator")
 public class Type {
-    @JsonProperty("code")
-    private String code;
-
-    public Optional<String> getCode() {
-        return Optional.ofNullable(code);
-    }
 }
