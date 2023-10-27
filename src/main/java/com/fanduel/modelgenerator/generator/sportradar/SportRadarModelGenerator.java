@@ -52,6 +52,7 @@ public class SportRadarModelGenerator implements ModelGenerator {
 
     private final String docsUrl;
     private final List<SportRadarRequestMetadata> requestMetadataList = new LinkedList<>();
+    private static final String CLIENT_NAME = "SportRadarClient";
     @Getter
     private final String outputDirectory = "src/main/java/";
     @Getter
@@ -190,7 +191,7 @@ public class SportRadarModelGenerator implements ModelGenerator {
                 })
                 .collect(Collectors.toList());
         TypeSpec.Builder interfaceBuilder = TypeSpec
-                .interfaceBuilder("SportRadarClient")
+                .interfaceBuilder(CLIENT_NAME)
                 .addModifiers(Modifier.PUBLIC)
                 .addAnnotation(
                         AnnotationSpec
@@ -212,6 +213,11 @@ public class SportRadarModelGenerator implements ModelGenerator {
             javaFile.writeTo(path);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+
+        File interfaceClassFile = new File(outputDirectory + basePackage.replaceAll("\\.", "/") + "/" + packageName + "/" + CLIENT_NAME + ".class");
+        if (interfaceClassFile.exists()) {
+            interfaceClassFile.delete();
         }
     }
 
