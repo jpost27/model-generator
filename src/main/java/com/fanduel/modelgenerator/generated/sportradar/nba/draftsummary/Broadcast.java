@@ -1,8 +1,5 @@
 package com.fanduel.modelgenerator.generated.sportradar.nba.draftsummary;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.lang.String;
-import java.util.Optional;
 import javax.annotation.processing.Generated;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -13,17 +10,4 @@ import lombok.experimental.Accessors;
 )
 @Generated("fanduel-model-generator")
 public class Broadcast {
-    @JsonProperty("channel")
-    private String channel;
-
-    @JsonProperty("network")
-    private String network;
-
-    public Optional<String> getChannel() {
-        return Optional.ofNullable(channel);
-    }
-
-    public Optional<String> getNetwork() {
-        return Optional.ofNullable(network);
-    }
 }
