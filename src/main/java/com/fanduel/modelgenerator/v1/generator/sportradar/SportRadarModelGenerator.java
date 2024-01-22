@@ -134,7 +134,7 @@ public class SportRadarModelGenerator implements ModelGenerator {
         });
 
         File rootDirectory = new File(outputDirectory + basePackage.replaceAll("\\.", "/") + "/" + packageName);
-        List<File> allFiles = FileUtils.getAllFilesFromRootDirectory(rootDirectory);
+        List<File> allFiles = FileUtils.getAllFilesInDirectory(rootDirectory);
 
         // compile the java file
         System.out.println("Compiling files under " + rootDirectory.getName());
@@ -150,18 +150,18 @@ public class SportRadarModelGenerator implements ModelGenerator {
             log.error("Compilation could not be completed, finished with exit code {}.", result);
             throw new RuntimeException();
         }
-        System.out.println("Generating client interface.");
-        File clientFile = generateClientInterface(requestMetadataList, packageName);
-        // Compile file
-        compiler.run(null, null, null, clientFile.getAbsolutePath());
-        try {
-            Class<?> clientClass =
-                    ClassLoader.getSystemClassLoader().loadClass(basePackage + "." + packageName + "." + CLIENT_NAME);
-            System.out.println("Generating client implementation.");
-            generateClientImpl(requestMetadataList, packageName, clientClass);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+//        System.out.println("Generating client interface.");
+//        File clientFile = generateClientInterface(requestMetadataList, packageName);
+//        // Compile file
+//        compiler.run(null, null, null, clientFile.getAbsolutePath());
+//        try {
+//            Class<?> clientClass =
+//                    ClassLoader.getSystemClassLoader().loadClass(basePackage + "." + packageName + "." + CLIENT_NAME);
+//            System.out.println("Generating client implementation.");
+//            generateClientImpl(requestMetadataList, packageName, clientClass);
+//        } catch (ClassNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
         System.out.println("Generation completed.");
     }
 

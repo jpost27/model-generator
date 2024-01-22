@@ -1,0 +1,3366 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="js-theme-default is-logged-out js-astro better-docs better-docs-wide better-docs-wide-bg complete"><head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <link rel="P3Pv1" href="/w3c/p3p.xml">
+        <style id="placeholder-styles">@-webkit-keyframes a{0%{background-color:#d3d3d3}50%{background-color:#e5e5e5}to{background-color:#d3d3d3}}@keyframes a{0%{background-color:#d3d3d3}50%{background-color:#e5e5e5}to{background-color:#d3d3d3}}.placeholder{-webkit-animation:a 1.5s ease-in infinite;animation:a 1.5s ease-in infinite;background-color:#e5e5e5}.placeholder-hero{height:20em}.placeholder-heading{height:3em;width:55%}.placeholder-sentence{height:1.5em;margin-bottom:.5em}.placeholder-sentence-last{width:85%}.placeholder-paragraph{height:8em;margin-top:1.5625em}.placeholder-btn{height:3em;width:8em}.placeholder-btn,.placeholder-heading,.placeholder-hero,.placeholder-paragraph{margin-bottom:1.5625em}</style><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="shortcut icon" href="/files/favicon.ico"><link rel="icon" sizes="16x16 24x24 32x32 64x64" href="/files/favicon.ico"><style id="better-docs-lang-styles">pre.lang-bash,pre.language-bash,pre.lang-ruby,pre.language-ruby,pre.lang-python,pre.language-python{display:none;visibility:hidden;}pre.lang-bash.active,pre.language-bash.active,pre.lang-ruby.active,pre.language-ruby.active,pre.lang-python.active,pre.language-python.active{display:block;visibility:visible;}</style><script src="https://cdn.jsdelivr.net/gh/bramstein/fontfaceobserver@2.0.13/fontfaceobserver.standalone.js"></script><script src="/public/Mashery/scripts/themes/blackbeard/prism.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PV9XWHD"></script><script type="text/javascript">
+            //<![CDATA[
+            var mashery_info = {
+                        };
+
+            // iframe'd detection, to pop out if in an iframe
+            if (window.location !== parent.window.location && !(/(page|docs|blog)\/preview/.test(window.location.pathname))) {
+                parent.window.location = window.location;
+            }
+            //]]>
+        </script>
+            <title>Golf v3 | Sportradar US API Portal</title>
+    <link rel="alternate" type="application/rss+xml" href="https://developer.sportradar.com/docs/feed-comments/golf/Golf_v3">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://developer.sportradar.com/files/default.min.css">
+    <script src="/public/Mashery/scripts/themes/blackbeard/placeholders.js" type="text/javascript"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js" type="text/javascript"></script>
+    <script src="/public/Mashery/scripts/Mashery/source/ForumPreview.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+// @temp
+// Coming to core
+portalOptions.ajaxIgnore = '.js-ajax-ignore';
+
+var redirectMap = [
+	{
+		original: '/files/index.html',
+		redirect: '/docs/read/Home'
+	},
+	{
+		original: '/files/indexSoccer.html#soccer-extended-api-v3',
+		redirect: '/docs/read/football_soccer/Soccer_Extended_v3'
+	},
+	{
+		original: '/files/indexSoccer.html#soccer-api-v3',
+		redirect: '/docs/read/football_soccer/Soccer_v3'
+	},
+	{
+		original: '/files/indexSoccer.html#soccer-api-v2-1',
+		redirect: '/docs/read/football_soccer/Soccer_v21'
+	},
+	{
+		original: '/files/indexSoccer.html#soccer-api-v2',
+		redirect: '/docs/read/football_soccer/Soccer_v2'
+	},
+	{
+		original: '/files/indexSoccer.html#beach-soccer-api',
+		redirect: '/docs/read/football_soccer/Beach_Soccer_v1'
+	},
+	{
+		original: '/files/indexSoccer.html',
+		redirect: '/docs/read/football_soccer/Soccer_Extended_v3'
+	},
+	{
+		original: '/files/indexFootball.html#nfl-official-api-v5',
+		redirect: '/docs/read/american_football/NFL_v5'
+	},
+	{
+		original: '/files/indexFootball.html#nfl-official-api-v2',
+		redirect: '/docs/read/american_football/NFL_v2'
+	},
+	{
+		original: '/files/indexFootball.html#nfl-official-api-v1',
+		redirect: '/docs/read/american_football/NFL_v1'
+	},
+	{
+		original: '/files/indexFootball.html#nfl-next-generation-stats-api',
+		redirect: '/docs/read/american_football/NFL_Next_Generation_Stats_v1'
+	},
+	{
+		original: '/files/indexFootball.html#classic-nfl-api',
+		redirect: '/docs/read/american_football/Classic_NFL_v1'
+	},
+	{
+		original: '/files/indexFootball.html#ncaa-football-api',
+		redirect: '/docs/read/american_football/NCAA_Mens_Football_v1'
+	},
+	{
+		original: '/files/indexFootball.html#arena-football-league',
+		redirect: '/docs/read/american_football/Arena_Football_v1'
+	},
+	{
+		original: '/files/indexFootball.html#global-american-football-api',
+		redirect: '/docs/read/american_football/Global_American_Football_v1'
+	},
+	{
+		original: '/files/indexFootball.html',
+		redirect: '/docs/read/american_football/NFL_v5'
+	},
+	{
+		original: '/files/indexFootball.html#aussie-rules-football-v2',
+		redirect: '/docs/read/australian_rules_football/Australian_Rules_Football_v2'
+	},
+	{
+		original: '/files/indexFootball.html#aussie-rules-football-v1',
+		redirect: '/docs/read/australian_rules_football/Australian_Rules_Football_v1'
+	},
+	{
+		original: '/files/indexBaseball.html#major-league-baseball-api-v6-5',
+		redirect: '/docs/read/baseball/MLB_v65'
+	},
+	{
+		original: '/files/indexBaseball.html#major-league-baseball-api-v6',
+		redirect: '/docs/read/baseball/MLB_v6'
+	},
+	{
+		original: '/files/indexBaseball.html#major-league-baseball-api-v5',
+		redirect: '/docs/read/baseball/MLB_v5'
+	},
+	{
+		original: '/files/indexBaseball.html#global-baseball-api',
+		redirect: '/docs/read/baseball/Global_Baseball_v1'
+	},
+	{
+		original: '/files/indexBaseball.html',
+		redirect: '/docs/read/baseball/MLB_v65'
+	},
+	{
+		original: '/files/indexBasketball.html#nba-api-v5',
+		redirect: '/docs/read/basketball/NBA_v5'
+	},
+	{
+		original: '/files/indexBasketball.html#nba-api-v4',
+		redirect: '/docs/read/basketball/NBA_v4'
+	},
+	{
+		original: '/files/indexBasketball.html#nba-api-v3',
+		redirect: '/docs/read/basketball/NBA_v3'
+	},
+	{
+		original: '/files/indexBasketball.html#wnba-api-v4',
+		redirect: '/docs/read/basketball/WNBA_v4'
+	},
+	{
+		original: '/files/indexBasketball.html#wnba-api-v3',
+		redirect: '/docs/read/basketball/WNBA_v3'
+	},
+	{
+		original: '/files/indexBasketball.html#ncaa-mens-basketball-api-v4',
+		redirect: '/docs/read/basketball/NCAA_Mens_Basketball_v4'
+	},
+	{
+		original: '/files/indexBasketball.html#ncaa-mens-basketball-api-v3',
+		redirect: '/docs/read/basketball/NCAA_Mens_Basketball_v3'
+	},
+	{
+		original: '/files/indexBasketball.html#ncaa-womens-basketball-api',
+		redirect: '/docs/read/basketball/NCAA_Womens_Basketball_v3'
+	},
+	{
+		original: '/files/indexBasketball.html#global-basketball-api',
+		redirect: '/docs/read/basketball/Global_Basketball_v1'
+	},
+	{
+		original: '/files/indexBasketball.html',
+		redirect: '/docs/read/basketball/NBA_v5'
+	},
+	{
+		original: '/files/indexCricket.html#cricket-v2',
+		redirect: '/docs/read/cricket/Cricket_v2'
+	},
+	{
+		original: '/files/indexCricket.html#cricket-v1',
+		redirect: '/docs/read/cricket/Cricket_v1'
+	},
+	{
+		original: '/files/indexCricket.html',
+		redirect: '/docs/read/cricket/Cricket_v2'
+	},
+	{
+		original: '/files/indexEditorial.html#editorial-content-api',
+		redirect: '/docs/read/editorial_content/Editorial_Content_v3'
+	},
+	{
+		original: '/files/indexEditorial.html',
+		redirect: '/docs/read/editorial_content/Editorial_Content_v3'
+	},
+	{
+		original: '/files/indexeSports.html',
+		redirect: '/docs/read/esports/CounterStrike_Global_Offensive_v1'
+	},
+	{
+		original: '/files/indexGolf.html#golf-api',
+		redirect: '/docs/read/golf/Golf_v2'
+	},
+	{
+		original: '/files/indexGolf.html',
+		redirect: '/docs/read/golf/Golf_v2'
+	},
+	{
+		original: '/files/indexHandball.html#handball-api-v2',
+		redirect: '/docs/read/handball/Handball_v2'
+	},
+	{
+		original: '/files/indexHandball.html#handball-api-v1',
+		redirect: '/docs/read/handball/Handball_v1'
+	},
+	{
+		original: '/files/indexHandball.html',
+		redirect: '/docs/read/handball/Handball_v2'
+	},
+	{
+		original: '/files/indexHockey.html#nhl-api-v5',
+		redirect: '/docs/read/hockey/NHL_v5'
+	},
+	{
+		original: '/files/indexHockey.html#nhl-api-v4',
+		redirect: '/docs/read/hockey/NHL_v4'
+	},
+	{
+		original: '/files/indexHockey.html#ncaa-mens-hockey-api',
+		redirect: '/docs/read/hockey/NCAA_Mens_Hockey_v1'
+	},
+	{
+		original: '/files/indexHockey.html#global-ice-hockey-api',
+		redirect: '/docs/read/hockey/Global_Ice_Hockey_v1'
+	},
+	{
+		original: '/files/indexHockey.html#field-hockey-api',
+		redirect: '/docs/read/hockey/Field_Hockey_v1'
+	},
+	{
+		original: '/files/indexHockey.html',
+		redirect: '/docs/read/hockey/NHL_v5'
+	},
+	{
+		original: '/files/indexImages.html#images-api-v3',
+		redirect: '/docs/read/images/Images_v3'
+	},
+	{
+		original: '/files/indexImages.html',
+		redirect: '/docs/read/images/Images_v3'
+	},
+	{
+		original: '/files/indexOdds.html#odds-comparison-api',
+		redirect: '/docs/read/odds/Odds_Comparison_v1'
+	},
+	{
+		original: '/files/indexOdds.html',
+		redirect: '/docs/read/odds/Odds_Comparison_v1'
+	},
+	{
+		original: '/files/indexOlympics.html#winter-olympics-api',
+		redirect: '/docs/read/olympics/Winter_Olympics_v3'
+	},
+	{
+		original: '/files/indexOlympics.html',
+		redirect: '/docs/read/olympics/Winter_Olympics_v3'
+	},
+	{
+		original: '/files/indexRacing.html#official-nascar-api',
+		redirect: '/docs/read/racing/NASCAR_v3'
+	},
+	{
+		original: '/files/indexRacing.html#sr-nascar-api',
+		redirect: '/docs/read/racing/Classic_NASCAR_v3'
+	},
+	{
+		original: '/files/indexRacing.html#motorsport-api',
+		redirect: '/docs/read/racing/Motorsport_v1'
+	},
+	{
+		original: '/files/indexRacing.html#formula-1-api',
+		redirect: '/docs/read/racing/Formula_1_v2'
+	},
+	{
+		original: '/files/indexRacing.html#formula-e-api',
+		redirect: '/docs/read/racing/Formula_E_v2'
+	},
+	{
+		original: '/files/indexRacing.html#indycar-api',
+		redirect: '/docs/read/racing/IndyCar_v2'
+	},
+	{
+		original: '/files/indexRacing.html#motogp-api',
+		redirect: '/docs/read/racing/MotoGP_v2'
+	},
+	{
+		original: '/files/indexRacing.html',
+		redirect: '/docs/read/racing/NASCAR_v3'
+	},
+	{
+		original: '/files/indexRugby.html#rugby-api-v2',
+		redirect: '/docs/read/rugby/Rugby_v2'
+	},
+	{
+		original: '/files/indexRugby.html#rugby-api-v1',
+		redirect: '/docs/read/rugby/Rugby_v1'
+	},
+	{
+		original: '/files/indexRugby.html',
+		redirect: '/docs/read/rugby/Rugby_v2'
+	},
+	{
+		original: '/files/indexTennis.html#tennis-v2-api',
+		redirect: '/docs/read/tennis/Tennis_v2'
+	},
+	{
+		original: '/files/indexTennis.html',
+		redirect: '/docs/read/tennis/Tennis_v2'
+	},
+	{
+		original: '/files/indexBadminton.html',
+		redirect: '/docs/read/baseline_sports_coverage/Badminton_v1'
+	},
+	{
+		original: '/files/indexBandy.html',
+		redirect: '/docs/read/baseline_sports_coverage/Bandy_v1'
+	},
+	{
+		original: '/files/indexCurling.html',
+		redirect: '/docs/read/baseline_sports_coverage/Curling_v1'
+	},
+	{
+		original: '/files/indexCycling.html',
+		redirect: '/docs/read/baseline_sports_coverage/Cycling_v1'
+	},
+	{
+		original: '/files/indexDarts.html',
+		redirect: '/docs/read/baseline_sports_coverage/Darts_v1'
+	},
+	{
+		original: '/files/indexFloorball.html',
+		redirect: '/docs/read/baseline_sports_coverage/Floorball_v1'
+	},
+	{
+		original: '/files/indexFutsal.html',
+		redirect: '/docs/read/baseline_sports_coverage/Futsal_v1'
+	},
+	{
+		original: '/files/indexPesapallo.html',
+		redirect: '/docs/read/baseline_sports_coverage/Pesapallo_v1'
+	},
+	{
+		original: '/files/indexSnooker.html',
+		redirect: '/docs/read/baseline_sports_coverage/Snooker_v1'
+	},
+	{
+		original: '/files/indexSquash.html',
+		redirect: '/docs/read/baseline_sports_coverage/Squash_v1'
+	},
+	{
+		original: 'indexVolleyball.html#beach-volleyball-api',
+		redirect: '/docs/read/baseline_sports_coverage/Volleyball_Beach'
+	},
+	{
+		original: '/files/indexVolleyball.html#indoor-volleyball-api',
+		redirect: '/docs/read/baseline_sports_coverage/Volleyball_Indoor'
+	},
+	{
+		original: '/files/indexVolleyball.html',
+		redirect: '/docs/read/baseline_sports_coverage/Volleyball_Beach'
+	},
+	{
+		original: '/files/indexWaterpolo.html',
+		redirect: '/docs/read/baseline_sports_coverage/Waterpolo_v1'
+	}
+];
+
+window.addEventListener('portalBeforeRender', function () {
+	if (mashery.contentType !== 'fourOhFour') return;
+	var redirect = redirectMap.find(function (item) {
+		return new RegExp(item.original).test(window.location.href);
+	});
+	if (!redirect) return;
+	window.location.href = redirect.redirect;
+}, false);
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PV9XWHD');
+
+// Toggle IO-Docs
+var toggleIODocs=function(){"use strict";var e,t=document.querySelector("#apiId");t&&function(e,t){if(e.api&&e.method){var o=document.querySelectorAll("#api"+t+" .methods .title .name");if(!(o.length<1)){var n=Array.from(o).filter(function(t){return t.textContent.trim()===decodeURIComponent(e.method)});if(!(n.length<1)){var r=n[0].closest(".method");if(r){ioDocs.hideAllMethods(),ioDocs.toggleMethod(r);var i=function(e){var t=0;if(e.offsetParent)do{t+=e.offsetTop,e=e.offsetParent}while(e);return t>=0?t:0}(r);window.scrollTo(0,i)}}}}}(e=function(e){var t={},o=document.createElement("a");o.href=e;for(var n=o.search.substring(1).split("&"),r=0;r<n.length;r++){var i=n[r].split("=");t[i[0]]=decodeURIComponent(i[1])}return t}(window.location.href),function(e){if(e.api){var o=Array.from(t.options).filter(function(t){return t.textContent.trim()===decodeURIComponent(e.api)});if(!(o.length<1))return t.value=o[0].value,ioDocs.selectAPI(o[0].value),o[0].value}}(e))};
+//]]>
+</script>
+        <!-- add syntax highlighter -->
+        <script type="text/javascript">
+            if(window.SyntaxHighlighter != undefined) { // check for syntax highlighter load before using
+                SyntaxHighlighter.all();
+            }
+        </script>
+        <!-- end syntax highlighter -->
+        <!--[if lt IE 7.]>
+            <link href="/public/Mashery/styles/IE6.css" type="text/css" media="screen" rel="stylesheet" />
+        <![endif]-->
+        <!--[if IE 7]>
+            <link href="/public/Mashery/styles/IE7.css" type="text/css" media="screen" rel="stylesheet" />
+        <![endif]-->
+        <!--[if gte IE 8]>
+            <link href="/public/Mashery/styles/IE8.css" type="text/css" media="screen" rel="stylesheet" />
+        <![endif]-->
+
+    <style id="fluid-vids-styles">.fluidvids {width: 100%; max-width: 100%; position: relative;}.fluidvids-item {position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;}</style></head>
+    <body id="page-docs" class="page-docs read en_US offside-js--init">
+        <!-- PAGE -->
+        
+        <!-- /page -->
+
+        <!-- Start Branding script tag -->
+        <script type="text/javascript">
+            // get the branding logo to set the mouseover/out and onclick
+            var brandingLogo = document.getElementById('branding-logo');
+            if(brandingLogo != undefined) {
+                brandingLogo['onclick'] = function() {
+                    location.href = "http://www.sportradar.com/";
+                };
+                brandingLogo['onmouseover'] = function() {
+                    this.style.cursor = 'pointer';
+                };
+                brandingLogo['onmouseout'] = function() {
+                    this.style.cursor = 'auto';
+                };
+            }
+
+            // get the mashery logo to set the mouseover/out and onclick
+            var masheryLogo = document.getElementById('branding-mashery');
+            if(masheryLogo != undefined) {
+                masheryLogo['onclick'] = function() {
+                    location.href = "http://www.mashery.com/";
+                };
+                masheryLogo['onmouseover'] = function() {
+                    this.style.cursor = 'pointer';
+                };
+                masheryLogo['onmouseout'] = function() {
+                    this.style.cursor = 'auto';
+                };
+            }
+        </script>
+        <!-- End Branding script tag -->
+            <!-- <div id="extra1">&nbsp;</div>
+            <div id="extra2">&nbsp;</div> -->
+
+        <script type="text/javascript" src="/public/Mashery/scripts/themes/blackbeard/app.js"></script><div id="app-wrapper" class="category-docs single-docs-golf-golf_v3"><!-- Old Browser Warning --><!--[if lt IE 9]><section class="container">Did you know that your web browser is a bit old? Some of the content on this site might not work right as a result. <a href="http://whatbrowser.org">Upgrade your browser</a> for a faster, better, and safer web experience.</section><![endif]--><div id="app" class="tabindex" tabindex="-1"><a class="screen-reader screen-reader-focusable" href="#main-wrapper">Skip to content</a><nav id="nav-primary-wrapper"><div class="nav-primary nav-wrap" id="nav-primary"><div class="container padding-top-small padding-bottom-small"><a id="logo" class="logo" href="/"><img height="35" width="202" alt="Sportradar Developer Portal" src="https://developer.sportradar.com/files/logo.svg"></a><div class="nav-toggle-wrap"><a role="button" class="nav-toggle" id="nav-primary-toggle" data-nav-toggle=".nav-collapse" href="#">☰ Menu</a><a role="button" class="nav-toggle margin-right js-scroll-ignore" id="nav-docs-toggle" href="#">⋮ Docs Navigation</a></div><div class="nav-menu nav-collapse" id="nav-primary-menu"><ul class="nav" id="nav-primary-list"><li><a href="https://developer.sportradar.com/api_gallery">COVERAGE</a></li><li><a href="https://developer.sportradar.com/API_Packaging">PACKAGES</a></li><li><a href="https://developer.sportradar.com/docs/read/Home">DOCUMENTATION</a></li><li><a href="https://developer.sportradar.com/io-docs">API SANDBOX</a></li><li><a href="https://developer.sportradar.com/API_Release_Log">RELEASE LOG</a></li></ul></div></div></div></nav><nav id="nav-user-wrapper"><div class="nav-user container" id="nav-user"><div class="nav-menu nav-collapse" id="nav-user-menu"><ul class="nav-user-list list-inline text-muted text-right-large padding-top-small padding-bottom-small no-margin-bottom" id="nav-user-list"><li id="nav-user-signin"><a href="https://developer.sportradar.com/login/login?r=https%3A%2F%2Fdeveloper.sportradar.com%2Fdocs%2Fread%2Fgolf%2FGolf_v3&amp;h=e38a22d2814cccfda97512c565007c04">Sign In</a></li><li id="nav-user-register"><a href="/member/register">Register</a></li></ul></div></div></nav><!-- tabindex="-1" hack for skipnav link: https://code.google.com/p/chromium/issues/detail?id=37721 --><main class="tabindex" tabindex="-1" id="main-wrapper"><div class="main" id="main"><div class="row row-docs"><div class="grid-docs grid-flip content better-docs-content better-docs-wide-content offside-sliding-element"><div class="better-docs-nav"><ul><li><a role="button" data-lang="bash" href="#lang-bash" class="active">Bash</a></li><li><a role="button" data-lang="ruby" href="#lang-ruby">Ruby</a></li><li><a role="button" data-lang="python" href="#lang-python">Python</a></li></ul></div><h1>Golf v3</h1>
+<p><a name="top"></a></p>
+<p><button class="btn btn-pdf btn-large btn-block summary js-right-height-content" onclick="window.open('/files/Sportradar_Golf_v3_Statistics_Summary.pdf','','scrollbars=yes,resizable=yes');return false;" style="text-decoration:none;font-size:140%">Statistics Summary</button><br>
+<button class="btn btn-pdf btn-large btn-block feeds js-right-height-content" onclick="window.open('/files/Sportradar_Golf_v3_Statistics_Feeds.pdf','','scrollbars=yes,resizable=yes');return false;" style="text-decoration:none;font-size:140%">Documentation</button><br>
+<button class="btn btn-pdf btn-large btn-block log js-right-height-content" onclick="window.open('/files/Golf_API_v3_Change_Log.pdf','','scrollbars=yes,resizable=yes');return false;" style="text-decoration:none;font-size:140%">Change Log</button><br>
+<a href="#FAQGolfv3" class="btn btn-block js-right-height-content js-scroll float-middle" data-options="{ &quot;easing&quot;: &quot;linear&quot; }" style="height: 50px;vertical-align: middle;text-decoration:none;font-size:140%">Frequently Asked Questions</a></p>
+<table class="basetable version">
+<thead>
+<tr>
+<td colspan="2" style="width:350px ;text-align:center" class="heading"><b>Quick Access</b></td>
+</tr>
+<tr>
+<td style="width:350px ;text-align:center" class="heading"><b>Postman Collection</b></td>
+<td style="width:350px ;text-align:center" class="heading"><b>XSD Schema</b></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://app.getpostman.com/run-collection/17203961-b19f2d7e-807b-4c93-be58-33d44f6994bd?action=collection%2Ffork&amp;collection-url=entityId%3D17203961-b19f2d7e-807b-4c93-be58-33d44f6994bd%26entityType%3Dcollection%26workspaceId%3Da6193b92-ee53-4979-bbfe-7ffdc589c3fc"><img src="https://run.pstmn.io/button.svg"></a></td>
+<td style="text-align:center" class="heading"><a href="/files/Golf_v3.zip">Download</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="golf-api-overview">Golf API Overview</h2>
+<p>Sportradar’s Golf API offers a comprehensive suite of real-time tournament updates, rankings, and seasonal statistics to power your golf experiences.  </p>
+<p>We provide full hole-by-hole coverage for the PGA Tour, Euro Tour, LPGA Tour, Champions Tour, Korn Ferry, Olympics, Ryder Cup, and President's Cup. All Majors and World Golf Championships are covered. For further coverage info, click <a href="#Coverage">here</a>.</p>
+<p>Primary feeds will return schedules, tournament leaderboards, tee times, and hole-by-hole scoring.</p>
+<p>Additional feeds provide a host of complementary stats, including:</p>
+<ul><li>Player profiles</li>
+<li>Seasonal statistics</li>
+<li>World golf ranking for the top 200 players</li>
+<li>Detailed course information</li></ul>
+<p>Real-time customers are also offered two delivery <a href="#Push">Push Feeds</a> to enhance speed.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:210px ;text-align:center"><b>API</b></td>
+<td style="width:210px ;text-align:center"><b>API Version</b></td>
+<td style="width:210px ;text-align:center"><b>Data Entry Workflow</b></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:210px ;text-align:center" class="heading">Golf</td>
+<td style="width:210px ;text-align:center">v3</td>
+<td style="width:210px ;text-align:center"><a onclick="window.open('/Golf_Workflow','','scrollbars=yes,resizable=yes');return false;">Data Entry Workflow</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead><tr>
+<td style="padding:20px;background-color:#00003c;color:white;width:57%;text-align:left;cursor:default;">
+<b>Note</b>: Authentication is required for all API calls.
+</td>
+</tr></thead><tbody>
+</tbody></table>
+<h2 id="golf-api-map">Golf API Map</h2>
+<p><a name="map"></a></p>
+<p>To best utilize the Golf API, you will need several parameters to create your API calls. The map below illustrates how you can obtain the parameters you need.</p>
+<blockquote>
+  <p><ins></ins></p><h3>Examples:</h3><p></p>
+  <p>To find a pairing's tee time for a given tournament:</p>
+  <ol><li>Call the Tournament Schedule and find the Tournament Id for the chosen tournament</li><li>Call the Tee Times Per Round using the Tournament Id and a chosen round number</li><li>Find your chosen pairing and locate the tee_time attribute</li></ol>
+  <p>The tee time of the pairing is displayed.</p>
+  <ol></ol>
+</blockquote>
+<p>The primary feeds require only a date or year to call the endpoints. Those feeds provide Tournament Ids which can be used to access the tournament feeds.</p>
+<p><img style="margin:0px auto;display:block" src="/files/Golfv3SVG.svg"></p>
+<p><a id="Coverage"></a></p>
+<h2 id="tour-coverage">Tour Coverage</h2>
+<p>Our Golf API provides hole-by-hole coverage for each of the below tours. See below for further information on events covered.</p>
+<p><b>PGA Tour calendar events</b> - We cover all PGA Tour events in which Fed Ex Cup points are awarded, including the World Golf Championship events.  In addition, we also cover the President’s Cup and Ryder Cup events.</p>
+<p><b>DP World Tour calendar events</b> - We cover all traditional match and stroke play events on the Euro Tour schedule that award Race to Dubai points, including Majors and World Golf Championship events. We also cover the President's Cup and Ryder Cup.</p>
+<p><b>LPGA Tour calendar events</b> - We cover all traditional match and stroke-play events on the LPGA Tour schedule which award points, including Majors. In addition, we also cover the Solheim Cup.</p>
+<p><b>PGA Tour Champions calendar events</b> - We cover all standard stroke and match play PGA Tour Champions events in which points are awarded.</p>
+<p><b>Korn Ferry Tour calendar events</b> - We cover all standard stroke and match play Korn Ferry Tour events in which points are awarded.</p>
+<p><b>LIV Golf Invitational Series</b> - We cover all standard stroke play events on the LIV Golf Invitational Series schedule.</p>
+<p><b>Olympic calendar events</b> – We cover all Olympic Men’s &amp; Women’s Golf events.</p>
+<p><b>Hero World Challenge</b> – We cover the Hero World Challenge. This event will not be reflected in player seasonal statistics, as it does not award Fed Ex Cup points. This tournament is listed in our PGA Tour Schedule.</p>
+<p><b>The Match exhibitions</b> - We cover these exhibitions within our PGA Tour schedule as a ‘cup’ style event. These events will not be reflected in player seasonal statistics, as they do not award Fed Ex Cup points.</p>
+<h2 id="daily-change-log">Daily Change Log</h2>
+<p>Provides IDs and timestamps for players, tournaments, schedules, pairings and statistics that have been modified on a given date. To receive the data updates, use these unique IDs to pull relevant API feeds.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td colspan="3">2 seconds</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">As Necessary</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Match &amp; Tee Time Information:</b></td>
+<td>Match Format </td>
+<td>Match Tee Time </td>
+<td>Match Title </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Round &amp; Tee Time Information:</b></td>
+<td>Pairing Id <br>Pairing Sequence <br>Pairing Starting Point </td>
+<td>Pairing Tee Time <br>Round Id </td>
+<td>Round Number <br>Round Status </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Information:</b></td>
+<td>Player Id </td>
+<td colspan="2">Player Name </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tour &amp; Season Information:</b></td>
+<td>Season Id <br>Season Year </td>
+<td>Tour Alias <br>Tour Id </td>
+<td>Tour Name </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tournament Information:</b></td>
+<td>Course Timezone <br>Event Type </td>
+<td>Tournament Id <br>Tournament Name </td>
+<td>Purse Currency </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/pga/v3/en/2021/02/05/changes.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/pga/v3/en/2021/02/05/changes.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/pga/v3/en/2021/02/05/changes.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Daily_Change_Log_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Daily Change Log feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{golf_tour}</code>/<code>{version}</code>/<code>{language_code}</code>/<code>{year}</code>/<code>{month}</code>/<code>{day}</code>/changes.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>golf_tour</code></td>
+<td>pga, lpga, champ, pgad, euro, oly, or liv.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td>Year in 4 digit format (YYYY).</td>
+</tr>
+<tr>
+<td><code>month</code></td>
+<td>Month in 2 digit format (MM).</td>
+</tr>
+<tr>
+<td><code>day</code></td>
+<td>Day in 2 digit format (DD).</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for the Daily Change Log, use the following URL.</p>
+<p><a href="https://feed.elasticstats.com/schema/golf/changelog-v1.0.xsd">https://feed.elasticstats.com/schema/golf/changelog-v1.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<h2 id="official-world-golf-ranking">Official World Golf Ranking</h2>
+<p>Provides Official World Golf Rankings and points for top the 200 players.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td colspan="3">120 seconds</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">As Necessary</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Information:</b></td>
+<td>Abbreviated Name <br>Country Representing <br>First Name </td>
+<td>Player Id <br>Last Name <br>Prior Rank </td>
+<td>Rank <br>Tied </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Statistics:</b></td>
+<td>Average Points <br>Events Played </td>
+<td>Fed Ex / OWGR Points <br>Points Gained </td>
+<td>Points Lost </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/v3/en/players/wgr/2021/rankings.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/v3/en/players/wgr/2021/rankings.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/v3/en/players/wgr/2021/rankings.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Official_World_Golf_Rankings_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Official World of Gold Ranking feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{version}</code>/<code>{language_code}</code>/players/wgr/<code>{year}</code>/rankings.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td>Year in 4 digit format (YYYY).</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for the Official World Golf Ranking visit:</p>
+<p><a href="https://feed.elasticstats.us/schema/golf/player/rankings-v3.0.xsd">https://feed.elasticstats.us/schema/golf/player/rankings-v3.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<h2 id="player-profile">Player Profile</h2>
+<p>Provides biographical information and historical tournament statistics for a given player.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td colspan="3">120 seconds</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">As Necessary</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Leaderboard &amp; Summary Information:</b></td>
+<td>Leaderboard Position <br>Money Won <br>Overall Score <br>Playoff Score <br>Playoff Strokes <br>Points Earned <br>Round - Birdies <br>Round - Bogeys </td>
+<td>Round - Double Bogeys <br>Round - Eagles <br>Round - Holes Completed <br>Round - Holes in One <br>Round - Pars <br>Round Number <br> Round - Score <br>Round - Strokes</td>
+<td>Total Strokes <br>Tournament - Money Earned <br>Tournament - Points Earned <br>Tournament - Position <br>Tournament - Tied </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Information:</b></td>
+<td>Abbreviated Name <br>Birthday <br>Birthplace <br>College <br>Country </td>
+<td>First Name <br>Handedness <br>Height <br>Id <br>Last Name </td>
+<td>Name <br>Residence <br>Status <br>Weight <br>Year Turned Pro </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Statistics:</b></td>
+<td>All Around Ranking <br>Average Drive Distance <br>Birdies Per Round <br>Cuts Made <br>Cuts Missed <br>Drive Accuracy Percentage <br>Earnings Rank <br>Events Played <br>Fed Ex Points Rank <br>Fed Ex / OWGR Points <br>First Place Finishes </td>
+<td>Greens in Regulation Percentage <br>Holes Per Eagle <br>Proximity to Hole Average <br>Putting Average <br>Sand Save Percentage <br>Scoring Average <br>Scrambling Percentage <br>Season Earnings <br>Second Place Finishes </td>
+<td>Strokes Gained Putting <br>Strokes Gained Tee to Green <br>Strokes Gained Total <br>Third Place Finishes <br>Top 10 Finishes <br>Top 25 Finishes <br>Total Driving <br>Withdrawals <br>World Ranking </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tour &amp; Season Information:</b></td>
+<td>Season Id <br>Season Year </td>
+<td>Tour Alias <br>Tour Id </td>
+<td>Tour Name </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tournament Information:</b></td>
+<td>Broadcast Network <br>Course Timezone <br>Coverage <br>End Date <br>Event Type </td>
+<td>Points <br>Id <br>Name <br>Purse <br>Purse Currency </td>
+<td>Scoring System <br>Start Date <br>Status <br>Winners Share </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/v3/en/players/ce5a1cd5-bf8c-4f0d-9903-844ec3aa7e10/profile.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/v3/en/players/ce5a1cd5-bf8c-4f0d-9903-844ec3aa7e10/profile.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/v3/en/players/ce5a1cd5-bf8c-4f0d-9903-844ec3aa7e10/profile.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Player_Profile_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Player Profile feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{version}</code>/<code>{language_code}</code>/players/<code>{player_id}</code>/profile.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>player_id</code></td>
+<td>ID for a given player.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for the Player Profile, use the following URL.</p>
+<p><a href="https://feed.elasticstats.com/schema/golf/player/profile-v3.0.xsd">https://feed.elasticstats.com/schema/golf/player/profile-v3.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<h2 id="player-profile-live">Player Profile Live</h2>
+<p>Provides biographical information and tournament statistics for currently live tournaments for a given player.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td colspan="3">120 seconds</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">As Necessary</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Leaderboard &amp; Summary Information:</b></td>
+<td>Leaderboard Position <br>Money Won <br>Overall Score <br>Playoff Score <br>Playoff Strokes <br>Points Earned <br>Round - Birdies <br>Round - Bogeys </td>
+<td>Round - Double Bogeys <br>Round - Eagles <br>Round - Holes Completed <br>Round - Holes in One <br>Round - Pars <br>Round Number <br> Round - Score <br>Round - Strokes</td>
+<td>Total Strokes <br>Tournament - Money Earned <br>Tournament - Points Earned <br>Tournament - Position <br>Tournament - Tied </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Information:</b></td>
+<td>Abbreviated Name <br>Birthday <br>Birthplace <br>College <br>Country </td>
+<td>First Name <br>Handedness <br>Height <br>Id <br>Last Name </td>
+<td>Name <br>Residence <br>Status <br>Weight <br>Year Turned Pro </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tour &amp; Season Information:</b></td>
+<td>Season Id <br>Season Year </td>
+<td>Tour Alias <br>Tour Id </td>
+<td>Tour Name </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tournament Information:</b></td>
+<td>Broadcast Network <br>Course Timezone <br>Coverage <br>End Date <br>Event Type </td>
+<td>Points <br>Id <br>Name <br>Purse <br>Purse Currency </td>
+<td>Scoring System <br>Start Date <br>Status <br>Winners Share </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/v3/en/players/ce5a1cd5-bf8c-4f0d-9903-844ec3aa7e10/live.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/v3/en/players/ce5a1cd5-bf8c-4f0d-9903-844ec3aa7e10/live.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/v3/en/players/ce5a1cd5-bf8c-4f0d-9903-844ec3aa7e10/live.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Player_Profile_Live_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Player Profile Live feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{version}</code>/<code>{language_code}</code>/players/<code>{player_id}</code>/live.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>player_id</code></td>
+<td>ID for a given player.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for the Player Profile Live, use the following URL.</p>
+<p><a href="https://feed.elasticstats.com/schema/golf/player/live-v3.0.xsd">https://feed.elasticstats.com/schema/golf/player/live-v3.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<h2 id="player-statistics">Player Statistics</h2>
+<p>Season statistics for all golfers who have earned Fed Ex Cup points in a given year. Season statistics are validated and adjusted on a weekly basis.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td colspan="3">120 seconds</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">As Necessary</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Information:</b></td>
+<td>Abbreviated Name <br>Country Representing </td>
+<td>First Name <br>Player Id </td>
+<td>Last Name </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Statistics:</b></td>
+<td>All Around Ranking <br>Average Drive Distance <br>Birdies Per Round <br>Cuts Made <br>Cuts Missed <br>Drive Accuracy Percentage <br>Earnings Rank <br>Events Played <br>Fed Ex Points Rank <br>Fed Ex / OWGR Points <br>First Place Finishes </td>
+<td>Greens in Regulation Percentage <br>Holes Per Eagle <br>Proximity to Hole Average <br>Putting Average <br>Sand Save Percentage <br>Scoring Average <br>Scrambling Percentage <br>Season Earnings <br>Second Place Finishes </td>
+<td>Strokes Gained Putting <br>Strokes Gained Tee to Green <br>Strokes Gained Total <br>Third Place Finishes <br>Top 10 Finishes <br>Top 25 Finishes <br>Total Driving <br>Withdrawals <br>World Ranking </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tour &amp; Season Information:</b></td>
+<td>Tour Alias <br>Tour Currency </td>
+<td>Tour Id </td>
+<td>Tour Name </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/pga/v3/en/2021/players/statistics.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/pga/v3/en/2021/players/statistics.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/pga/v3/en/2021/players/statistics.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Player_Statistics_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Player Statistics feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{golf_tour}</code>/<code>{version}</code>/<code>{language_code}</code>/<code>{year}</code>/players/statistics.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>golf_tour</code></td>
+<td>pga.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td>Year in 4 digit format (YYYY).</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for the Player Statistics, use the following URL.</p>
+<p><a href="https://feed.elasticstats.com/schema/golf/season/statistics-v3.0.xsd">https://feed.elasticstats.com/schema/golf/season/statistics-v3.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<h2 id="players">Players</h2>
+<p>Provides player biographical information for a given year and tour, for all players. This includes height, weight, place of birth, date of birth, residence, and college.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td colspan="3">120 seconds</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">As Necessary</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Information:</b></td>
+<td>Abbreviated Name <br>Birthday <br>Birthplace <br>College <br>Country Representing</td>
+<td>First Name <br>Gender <br>Handedness <br>Height <br>Id </td>
+<td>Last Name <br>Residence <br>Tour Member <br>Weight <br>Year Turned Pro </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tour &amp; Season Information:</b></td>
+<td>Season Id <br>Season Year </td>
+<td>Tour Alias <br>Tour Currency </td>
+<td>Tour Id <br>Name </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/pga/v3/en/2021/players/profiles.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/pga/v3/en/2021/players/profiles.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/pga/v3/en/2021/players/profiles.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Players_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Players feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{golf_tour}</code>/<code>{version}</code>/<code>{language_code}</code>/<code>{year}</code>/players/profiles.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>golf_tour</code></td>
+<td>pga, lpga, champ, pgad, euro, oly, or liv.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td>Year in 4 digit format (YYYY).</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for the Players, use the following URL.</p>
+<p><a href="https://feed.elasticstats.com/schema/golf/season/participant-v3.0.xsd">https://feed.elasticstats.com/schema/golf/season/participant-v3.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<h2 id="scorecards-per-round">Scorecards Per Round</h2>
+<p>Detailed round scoring including player information, course information, player scoring per hole, and overall tournament scoring per player.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">Realtime</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td>Live - <b>2s</b><br>Non-Live - <b>120s</b> </td>
+<td colspan="2"><i>Note: This endpoint will update to a 2s TTL (time to live) upon a game moving to <b>inprogress</b>. Upon <b>closed</b>, it will transfer to 120s.</i></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Course Information:</b></td>
+<td>Hole Number <br>Hole Yardage </td>
+<td>Id <br>Name <br>Par Score (Course) </td>
+<td>Par Score (Hole) <br>Total Yardage </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Match &amp; Tee Time Information:</b></td>
+<td>Format <br>Id </td>
+<td>Sequence <br>Status </td>
+<td>Title <br>Type </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Information:</b></td>
+<td>Abbreviated Name <br>Country Representing <br>First Name </td>
+<td>Id <br>Last Name <br>Name </td>
+<td>Team Id <br>Team Name <br>Tournament Seed </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Round &amp; Tee Time Information:</b></td>
+<td>Round Id </td>
+<td>Round Number </td>
+<td>Round Status </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Scoring Per Round:</b></td>
+<td>Birdies <br>Bogeys <br>Double Bogeys <br>Eagles <br>Hole Number <br>Hole Outcome <br>Hole Sequence <br>Holes Completed <br>Holes in One <br>Holes Not Played <br>Match Score </td>
+<td>Other Scores <br>Par Score <br>Pars <br>Player Sequence <br>Score <br>Starting Hole <br>Strokes <br>Team Birdies <br>Team Bogeys <br>Team Double Bogeys <br>Team Eagles </td>
+<td>Team Holes in One <br>Team Other Scores <br>Team Pars <br>Team Score <br>Team Status <br>Team Strokes <br>Team Thru <br>Total Strokes <br>Yardage </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tournament Information:</b></td>
+<td>Course Timezone <br>Coverage <br>End Date <br>Event Type </td>
+<td>Points <br>Id <br>Name <br>Purse <br>Purse Currency </td>
+<td>Scoring System <br>Start Date <br>Status <br>Winners Share </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/rounds/1/scores.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/rounds/1/scores.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/rounds/1/scores.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Scorecards_Per_Round_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Scorecards Per Round feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{golf_tour}</code>/<code>{version}</code>/<code>{language_code}</code>/<code>{year}</code>/tournaments/<code>{tournament_id}</code>/<code>{scorecard_type}</code>/<code>{round_number}</code>/scores.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>golf_tour</code></td>
+<td>pga, lpga, champ, pgad, euro, oly, or liv.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td>Year in 4 digit format (YYYY).</td>
+</tr>
+<tr>
+<td><code>tournament_id</code></td>
+<td>ID of a given tournament.</td>
+</tr>
+<tr>
+<td><code>scorecard_type</code></td>
+<td>Rounds or Playoff.</td>
+</tr>
+<tr>
+<td><code>round_number</code></td>
+<td>Number of the round.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for the Scorecards Per Round, use the following URL.</p>
+<p><a href="https://feed.elasticstats.com/schema/golf/tournament/scorecard-v3.0.xsd">https://feed.elasticstats.com/schema/golf/tournament/scorecard-v3.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<h2 id="seasons">Seasons</h2>
+<p>Provides a list of all available seasons for every tour.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td colspan="3">2 seconds</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">As Necessary</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tour &amp; Season Information:</b></td>
+<td>Season Id <br>Season Start Date <br>Season Status </td>
+<td>Season Year <br>Tour Alias </td>
+<td>Tour Id <br>Tour Name </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/v3/en/seasons.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/v3/en/seasons.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/v3/en/seasons.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Seasons_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Seasons feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{version}</code>/<code>{language_code}</code>/seasons.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for the Seasons, use the following URL.</p>
+<p><a href="https://feed.elasticstats.com/schema/golf/seasons-v3.0.xsd">https://feed.elasticstats.com/schema/golf/seasons-v3.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<h2 id="tee-times-per-round">Tee Times Per Round</h2>
+<p>Provides tee times for a given round, including pairings and starting positions.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">Realtime</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td>Live - <b>2s</b><br>Non-Live - <b>120s</b> </td>
+<td colspan="2"><i>Note: This endpoint will update to a 2s TTL (time to live) upon a game moving to <b>inprogress</b>. Upon <b>closed</b>, it will transfer to 120s.</i></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Course Information:</b></td>
+<td>Course Id <br>Course Name </td>
+<td>Par Score (Course) </td>
+<td>Total Yardage </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Match Information:</b></td>
+<td>Format <br>Id <br>Player Sequence </td>
+<td>Sequence <br>Starting Point <br>Status </td>
+<td>Tee Time <br>Title <br>Type </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Round &amp; Tee Time Information:</b></td>
+<td>Starting Point <br>Round Id </td>
+<td>Round Number </td>
+<td>Tee Time </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Information:</b></td>
+<td>Abbreviated Name <br>Country Representing <br>First Name </td>
+<td>Player Id <br>Last Name <br>Name </td>
+<td>Team Id <br>Team Name <br>Tournament Seed </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tournament Information:</b></td>
+<td>Bracket Id <br>Bracket Name <br>Course Timezone <br>Coverage <br>End Date </td>
+<td>Event Type <br>Points <br>Id <br>Name <br>Purse </td>
+<td>Purse Currency <br>Scoring System <br>Start Date <br>Status <br>Winners Share </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/rounds/1/teetimes.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/rounds/1/teetimes.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/rounds/1/teetimes.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Tee_Times_Per_Round_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Tee Times Per Round feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{golf_tour}</code>/<code>{version}</code>/<code>{language_code}</code>/<code>{year}</code>/tournaments/<code>{tournament_id}</code>/<code>{teetime_type}</code>/<code>{round_number}</code>/teetimes.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>golf_tour</code></td>
+<td>pga, lpga, champ, pgad, euro, oly, or liv.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td>Year in 4 digit format (YYYY).</td>
+</tr>
+<tr>
+<td><code>tournament_id</code></td>
+<td>ID of a given tournament.</td>
+</tr>
+<tr>
+<td><code>teetime_type</code></td>
+<td>Rounds or Playoff.</td>
+</tr>
+<tr>
+<td><code>round_number</code></td>
+<td>Number of the round.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for the Tee Times Per Round, use the following URL.</p>
+<p><a href="https://feed.elasticstats.com/schema/golf/tournament/teetime-v3.0.xsd">https://feed.elasticstats.com/schema/golf/tournament/teetime-v3.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<h2 id="tournament-hole-statistics">Tournament Hole Statistics</h2>
+<p>Detailed information on how the field fared on each hole for a given tournament.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">Realtime</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td>Live - <b>2s</b><br>Non-Live - <b>120s</b> </td>
+<td colspan="2"><i>Note: This endpoint will update to a 2s TTL (time to live) upon a game moving to <b>inprogress</b>. Upon <b>closed</b>, it will transfer to 120s.</i></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Course Information:</b></td>
+<td>Course Id <br>Course Name </td>
+<td>Par Score (Course) </td>
+<td>Total Yardage </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tournament Hole Statistics:</b></td>
+<td>Average Difference <br>Birdies <br>Bogeys <br>Double Bogeys <br>Eagles </td>
+<td>Hole Number <br>Holes in One <br>Number of Players <br>Other Scores </td>
+<td>Par Scores <br>Pars <br>Sequence <br>Strokes <br>Strokes Average </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Information:</b></td>
+<td colspan="3">Abbreviated Name </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Round &amp; Tee Time Information:</b></td>
+<td>Round Id </td>
+<td>Round Number </td>
+<td>Round Status </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tournament Information:</b></td>
+<td>Course Timezone <br>Coverage <br>End Date <br>Event Type </td>
+<td>Points <br>Id <br>Name <br>Purse <br>Purse Currency </td>
+<td>Scoring System <br>Start Date <br>Status <br>Winners Share </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/hole-statistics.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/hole-statistics.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/hole-statistics.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Tournament_Hole_Statistics_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Tournament Hole Statistics feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{golf_tour}</code>/<code>{version}</code>/<code>{language_code}</code>/<code>{year}</code>/tournaments/<code>{tournament_id}</code>/hole-statistics.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>golf_tour</code></td>
+<td>pga, lpga, champ, pgad, euro, oly, or liv.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td>Year in 4 digit format (YYYY).</td>
+</tr>
+<tr>
+<td><code>tournament_id</code></td>
+<td>ID of a given tournament.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for the Tournament Hole Statistics, use the following URL.</p>
+<p><a href="https://feed.elasticstats.com/schema/golf/tournament/statistics-v1.0.xsd">https://feed.elasticstats.com/schema/golf/tournament/statistics-v1.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<h2 id="tournament-leaderboard">Tournament Leaderboard</h2>
+<p>Provides a real-time leaderboard position for a given tournament, including player statistics at tournament and per-round level.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">Realtime</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td>Live - <b>2s</b><br>Non-Live - <b>120s</b> </td>
+<td colspan="2"><i>Note: This endpoint will update to a 2s TTL (time to live) upon a game moving to <b>inprogress</b>. Upon <b>closed</b>, it will transfer to 120s.</i></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Leaderboard &amp; Summary Information:</b></td>
+<td>Leaderboard Position <br>Match - Birdies <br>Match - Bogeys <br>Match - Double Bogeys <br>Match - Eagles <br>Match - Holes Not Played <br>Match - Other Scores <br>Match - Pars <br>Match - Score <br>Match - Thru <br>Money Won <br>Overall Score <br>Part <br>Part Status </td>
+<td>Round - Double Bogeys <br>Round - Eagles <br>Round - Holes Completed <br>Round - Holes in One <br>Round - Other Scores <br>Round - Pars <br>Round Number <br> Round - Score <br>Round - Strokes <br>Part Type <br>Playoff Score <br>Playoff Strokes <br>Points Earned <br>Round - Birdies </td>
+<td>Round - Bogeys <br>Starting Score <br>Team - Money <br>Team - Points <br>Team - Position <br>Total Strokes <br>Tournament - Losses <br>Tournament - Money Earned <br>Tournament - Points Earned <br>Tournament - Position <br>Tournament - Tied <br>Tournament - Wins </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Match &amp; Tee Time Information:</b></td>
+<td>Match Id <br>Sequence </td>
+<td>Status <br>Title </td>
+<td>Type </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Information:</b></td>
+<td>Abbreviated Name <br>Country Representing <br>First Name </td>
+<td>Id <br>Last Name <br>Status </td>
+<td>Team Id <br>Team Name </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Scoring Per Round:</b></td>
+<td>Team Score </td>
+<td>Team Status </td>
+<td>Team Strokes </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tournament Information:</b></td>
+<td>Course Timezone <br>Coverage <br>Cut Round <br>Cutline <br>End Date <br>Event Type </td>
+<td>Points <br>Projected Cutline <br>Id <br>Name <br>Purse <br>Purse Currency </td>
+<td>Scoring System <br>Start Date <br>Status <br>Winners Share </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/leaderboard.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/leaderboard.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/leaderboard.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Tournament_Leaderboard_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Tournament Leaderboard feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{golf_tour}</code>/<code>{version}</code>/<code>{language_code}</code>/<code>{year}</code>/tournaments/<code>{tournament_id}</code>/leaderboard.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>golf_tour</code></td>
+<td>pga, lpga, champ, pgad, euro, oly, or liv.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td>Year in 4 digit format (YYYY).</td>
+</tr>
+<tr>
+<td><code>tournament_id</code></td>
+<td>ID of a given tournament.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for the Tournament Leaderboard, use the following URL.</p>
+<p><a href="https://feed.elasticstats.com/schema/golf/tournament/leaderboard-v3.0.xsd">https://feed.elasticstats.com/schema/golf/tournament/leaderboard-v3.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<h2 id="tournament-schedule">Tournament Schedule</h2>
+<p>Schedule of tournaments for a given season including date, location, course layouts, and tournament purse.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td colspan="3">10 seconds</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">As Necessary</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Course Information:</b></td>
+<td>Hole Number <br>Hole Yardage <br>Id </td>
+<td>Name <br>Par Score (Course)</td>
+<td>Par Score (Hole) <br>Total Yardage </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Information (Defending Champ &amp; Winner):</b></td>
+<td>Abbreviated Name <br>Birthday <br>Birthplace <br>College </td>
+<td>Country Representing <br>First Name <br>Height <br>Id </td>
+<td>Last Name <br>Residence <br>Weight <br>Year Turned Pro </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tour &amp; Season Information:</b></td>
+<td>Season Id <br>Season Year </td>
+<td>Tour Alias <br>Tour Id </td>
+<td>Tour Name </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tournament Information:</b></td>
+<td>Course Timezone <br>Coverage <br>Cut Round <br>End Date <br>Event Type </td>
+<td>Points <br>Id <br>Name <br>Purse <br>Purse Currency </td>
+<td>Scoring System <br>Start Date <br>Status <br>Winners Share </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Venue Information:</b></td>
+<td>City <br>Country </td>
+<td>Id <br>Name </td>
+<td>State <br>Zip Code </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/pga/v3/en/2021/tournaments/schedule.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/pga/v3/en/2021/tournaments/schedule.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/pga/v3/en/2021/tournaments/schedule.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Tournament_Schedule_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Tournament Schedule feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{golf_tour}</code>/<code>{version}</code>/<code>{language_code}</code>/<code>{year}</code>/tournaments/schedule.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>golf_tour</code></td>
+<td>pga, lpga, champ, pgad, euro, oly, or liv.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td>Year in 4 digit format (YYYY).</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for Tournaments Schedule, use the following URL.</p>
+<p><a href="https://feed.elasticstats.com/schema/golf/schedule-v3.0.xsd">https://feed.elasticstats.com/schema/golf/schedule-v3.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<h2 id="tournament-summary">Tournament Summary</h2>
+<p>Provides information for a given tournament by year, including location, course layout and tournament field.</p>
+<table class="basetable version">
+<thead>
+<tr>
+<td style="width:130px" class="heading"><b>Update Frequency:</b></td>
+<td colspan="3">Realtime</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>TTL / Cache:</b></td>
+<td>Live - <b>2s</b><br>Non-Live - <b>120s</b> </td>
+<td colspan="2"><i>Note: This endpoint will update to a 2s TTL (time to live) upon a game moving to <b>inprogress</b>. Upon <b>closed</b>, it will transfer to 120s.</i></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Content Type:</b></td>
+<td colspan="3">XML or JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Course Information:</b></td>
+<td>Hole Number <br>Hole Yardage <br>Id </td>
+<td>Name <br>Par Score (Course)</td>
+<td>Par Score (Hole) <br>Total Yardage </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Player Information:</b></td>
+<td>Abbreviated Name <br>Country Representing </td>
+<td>First Name <br>Id <br>Last Name </td>
+<td>Team Id <br>Team Name <br>Tournament Seed </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Round &amp; Tee Time Information:</b></td>
+<td>Round Id </td>
+<td>Round Number </td>
+<td>Round Status </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Tournament Information:</b></td>
+<td>Bracket Id <br>Bracket Name <br>Broadcast - Cable <br>Broadcast - End At <br>Broadcast - Internet <br>Broadcast - Network <br>Broadcast - Radio <br> Broadcast - Satellite <br>Broadcast - Start At </td>
+<td>Course Timezone <br>Coverage <br>Cut Round <br>Cutline <br>End Date <br>Event Type <br>Points <br>Id <br>Name <br>Projected Cutline <br>Purse <br>Purse Currency </td>
+<td>Scoring System <br>Start Date <br>Status <br>Summary Part <br>Summary Status <br>Summary Type <br>Temperature <br>Total Rounds <br>Weather Condition <br>Wind Direction <br>Wind Speed <br>Winners Share </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="width:130px" class="heading"><b>Venue Information:</b></td>
+<td>City <br>Country </td>
+<td>Id <br>Name </td>
+<td>State <br>Zip Code </td>
+</tr>
+</tbody>
+</table>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/summary.xml?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import http.client
+
+conn = http.client.HTTPSConnection("api.sportradar.us")
+
+conn.request("GET", "/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/summary.xml?api_key={your_api_key}")
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))</code></pre>
+<pre><code class="shell language-shell">curl -X GET "https://api.sportradar.us/golf/trial/pga/v3/en/2020/tournaments/6ba4893c-c82e-4269-a0ab-c99a05c854a8/summary.xml?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns xml structured like <a onclick="window.open('/files/Golf_v3_Tournament_Summary_Example.xml','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Tournament Summary feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/<code>{golf_tour}</code>/<code>{version}</code>/<code>{language_code}</code>/<code>{year}</code>/tournaments/<code>{tournament_id}</code>/summary.<code>{format}</code>?api_key=<code>{your_api_key}</code></p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>golf_tour</code></td>
+<td>pga, lpga, champ, pgad, euro, oly, or liv.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Version number of the API you are accessing (Current Version: v3).</td>
+</tr>
+<tr>
+<td><code>language_code</code></td>
+<td>2 letter code for supported languages: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td>Year in 4 digit format (YYYY).</td>
+</tr>
+<tr>
+<td><code>tournament_id</code></td>
+<td>ID of a given tournament.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>xml or json.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<p>To retrieve the XML Schema Definition (.XSD) for the Tournaments Summary, use the following URL.</p>
+<p><a href="https://feed.elasticstats.com/schema/golf/tournament-v3.0.xsd">https://feed.elasticstats.com/schema/golf/tournament-v3.0.xsd</a></p>
+<p><a href="#top">Return to top</a></p>
+<p><a id="Push"></a></p>
+<h2 id="push-feeds">Push Feeds</h2>
+<blockquote>
+  <p>To best utilize Push feeds, we have included code samples in Ruby, Java and Python which provide an example of a way you can consume the feeds. Using these samples will output the feeds content to STDOUT. <br>For Java, we have also provided a <a href="https://developer.sportradar.com/files/stream-client.zip">Stream Client</a> to assist your integration. <br><br>Note: In the provided Java sample, replace "URL GOES HERE" with the desired Push feed URL.</p>
+</blockquote>
+<pre><code class="ruby language-ruby">require 'httpclient'
+
+module Sportradar
+    module HTTP
+        module Stream
+            class Client
+                attr_reader :url, :logger
+
+                def initialize(url, publisher, logger)
+                    @url = url
+                    @logger = logger
+                    @publisher = publisher
+                    @client = ::HTTPClient.new(:agent_name =&gt; 'SportsData/1.0')
+                end
+
+                def start
+                    @thread ||= Thread.new do
+                        logger.debug "Starting loop"
+                        @client.get_content(url, :follow_redirect =&gt; true) do |chunk|
+                            @publisher.publish(::JSON.parse(chunk)) if @publisher
+                        end
+                        logger.debug "finished loop"
+                    end
+                end
+
+                def stop
+                    @thread.terminate if @thread
+                end
+
+            end
+        end
+    end
+end</code></pre>
+<pre><code class="java language-java">package com.sportradar.http.stream.client;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class StreamClientTest {
+
+    private StreamClient client;
+
+    private static String SERVICE_URL = "&lt;url goes="" here=""&gt;";
+
+    @Before
+    public void setup() {
+        client = new StreamClient();
+    }
+
+    @After
+    public void cleanup() {
+        client.terminate();
+    }
+
+    @Test
+    public void testStream() throws Exception {
+        Handler handler = new ConsoleHandler();
+        client.stream(SERVICE_URL, handler);
+        System.out.println("Connecting....");
+        Thread.sleep(1 * 60 * 1000);
+        System.out.println("Disconnecting....");
+    }
+
+}</code></pre>
+<p>Some of our APIs include Push feeds that allow you to get updates as soon as they are available. Push API feeds automatically send JSON payload to you via a push service, and can dramatically reduce the number of calls you need to make to our RESTful API feeds. The structure of the Push feeds are similar to the structure of the corresponding RESTful API feed (i.e. Push Leaderboard and Tournament Leaderboard). The push service ensures reliable and efficient delivery of the most up to date information.</p>
+<p>Our Push services are based on a HTTP publish/subscribe model. When making a call to the Push APIs, you "subscribe" to various data feeds provided by our service; whenever new content is available on one of those feeds, the server pushes that information out to your client. When no new information is available on the feed, a heartbeat message is sent every 5 seconds to keep the connection active. If you want to filter the results of the feeds, there are several optional query string parameters that can be applied to the API call. If left unfiltered, than all data for the feed is displayed (i.e. all tournaments).</p>
+<p>For your applications to accept data from our Push feeds, ensure that your application can:</p>
+<ul>
+<li>Can follow a HTTP redirect or use the location provided in the feeds header within one minute of your initial request.</li>
+<li>Can accept HTTP data transfer encoded as chunked.</li>
+</ul>
+<p>Our Push service does not provide a "stateful session", there is no memory of what data has been sent previously. If you are disconnected from the Push session, you can use the RESTful API to catch up or recover from the disconnection.</p>
+<p>Syntax for using our Push feeds and examples of the JSON payloads can be found below.</p>
+<h2 id="push-leaderboard">Push Leaderboard</h2>
+<p>Detailed real-time tournament statistics including player statistics at tournament and per-round level.</p>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/stream/pga/leaderboards/subscribe?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import requests
+import json
+
+r = requests.get("https://api.sportradar.com/golf/trial/stream/pga/leaderboards/subscribe",
+    params = {'api_key': 'your_api_key'},
+    allow_redirects=False)
+
+redirect_url = r.headers['Location']
+r = requests.get(redirect_url, stream=True)
+
+for line in r.iter_lines():
+    # filter out keep-alive new lines
+    if line:
+        decoded_line = line.decode('utf-8')
+        print(json.loads(decoded_line))</code></pre>
+<pre><code class="shell language-shell">curl -L GET 'api.sportradar.us/golf/trial/stream/pga/leaderboards/subscribe?api_key={your_api_key}'</code></pre>
+<blockquote>
+  <p>The above command returns json like <a onclick="window.open('/files/Golf_v3_Push_Leaderboard_Example.json','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<p>Access the Leaderboard feed by replacing the parameters in the following URL:</p>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/stream/<code>{golf_tour}</code>/leaderboards/subscribe?api_key=<code>{your_api_key}</code>&amp;locale=en</p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>golf_tour</code></td>
+<td>pga, lpga, champ, pgad, euro, oly, or liv.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="optional-query-string-parameters">Optional Query String Parameters</h3>
+<blockquote>
+  <p>Example including optional query string parameters:</p>
+</blockquote>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/stream/pga/leaderboards/subscribe?api_key={your_api_key}&amp;amp;tournament=sd:tournament:9db12181-b55d-4e4f-8c18-936f4c7c7e2d&amp;amp;scoring_system=stroke")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import requests
+import json
+
+r = requests.get("https://api.sportradar.com/golf/trial/stream/pga/leaderboards/subscribe",
+    params = {'api_key': 'your_api_key', 'tournament': 'sd:tournament:9db12181-b55d-4e4f-8c18-936f4c7c7e2d', 'scoring_system': 'stroke'},
+    allow_redirects=False)
+
+redirect_url = r.headers['Location']
+r = requests.get(redirect_url, stream=True)
+
+for line in r.iter_lines():
+    # filter out keep-alive new lines
+    if line:
+        decoded_line = line.decode('utf-8')
+        print(json.loads(decoded_line))</code></pre>
+<pre><code class="shell language-shell">curl -L GET 'api.sportradar.us/golf/trial/stream/pga/leaderboards/subscribe?api_key={your_api_key}&amp;amp;tournament=sd:tournament:9db12181-b55d-4e4f-8c18-936f4c7c7e2d&amp;amp;scoring_system=stroke'</code></pre>
+<p>In addition to the URL parameters listed above, you can filter the Leaderboard information with one or more of the following optional query string parameters.</p>
+<table>
+<thead><tr>
+<td style="padding:20px;background-color:#00003c;color:white;width:57%;text-align:left;cursor:default;">
+<b>Note</b>: Optional query string parameters must be added after your API key with an ampersand (&amp;). If you are filtering for more than one result, separate the results with a comma (,) and no spaces.
+</td>
+</tr></thead><tbody>
+</tbody></table>
+<p>Replace placeholders with the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>locale</code></td>
+<td>Locale expressed as 2 letter code: locale={language_code} <br>Example: locale=en <br>Valid codes: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+<tr>
+<td><code>tournament</code></td>
+<td>Tournament id expressed as: sd:tournament:{tournament_id}. <br>Example: sd:tournament:9db12181-b55d-4e4f-8c18-936f4c7c7e2d</td>
+</tr>
+<tr>
+<td><code>tournament_type</code></td>
+<td>Tournament type expressed as: {tournament_type}. <br>Example: tournament_type=stroke</td>
+</tr>
+<tr>
+<td><code>scoring_system</code></td>
+<td>Scoring system expressed as: {scoring_system}. <br>Example: scoring_system=match</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">Return to top</a></p>
+<h2 id="push-scorecard">Push Scorecard</h2>
+<p>Detailed real-time round scoring including player information, player scoring per hole, and overall tournament scoring per player.</p>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/stream/pga/scorecards/subscribe?api_key={your_api_key}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import requests
+import json
+
+r = requests.get("https://api.sportradar.com/golf/trial/stream/pga/scorecards/subscribe",
+    params = {'api_key': 'your_api_key'},
+    allow_redirects=False)
+
+redirect_url = r.headers['Location']
+r = requests.get(redirect_url, stream=True)
+
+for line in r.iter_lines():
+    # filter out keep-alive new lines
+    if line:
+        decoded_line = line.decode('utf-8')
+        print(json.loads(decoded_line))</code></pre>
+<pre><code class="shell language-shell">curl -L GET "https://api.sportradar.us/golf/trial/stream/pga/scorecards/subscribe?api_key={your_api_key}"</code></pre>
+<blockquote>
+  <p>The above command returns json like <a onclick="window.open('/files/Golf_v3_Push_Scorecard_Example.json','','scrollbars=yes,resizable=yes');return false;">this</a>.</p>
+</blockquote>
+<table>
+<thead><tr>
+<td style="padding:20px;background-color:#00003c;color:white;width:57%;text-align:left;cursor:default;">
+<b>Note</b>: In case of disconnection with the feed, use the RESTful api Scorecard Per Round feed to recover any potentially missed data.
+</td>
+</tr></thead><tbody>
+</tbody></table>
+<p>https://api.sportradar.us/golf/<code>{access_level}</code>/stream/<code>{golf_tour}</code>/scorecards/subscribe?api_key=<code>{your_api_key}</code>&amp;locale=en</p>
+<p>Replace placeholders with the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>access_level</code></td>
+<td>Defines the access level of your API key as Production (production) or Trial (trial).</td>
+</tr>
+<tr>
+<td><code>golf_tour</code></td>
+<td>pga, lpga, champ, pgad, euro, oly, or liv.</td>
+</tr>
+<tr>
+<td><code>your_api_key</code></td>
+<td>Your API key.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="optional-query-string-parameters-1">Optional Query String Parameters</h3>
+<blockquote>
+  <p>Example including optional query string parameters:</p>
+</blockquote>
+<pre><code class="ruby language-ruby">require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://api.sportradar.us/golf/trial/stream/pga/scorecards/subscribe?api_key={your_api_key}&amp;amp;tournament=sd:tournament:6180b261-9595-4b90-a706-58f54258da71&amp;amp;player=sd:player:45a571da-a1e4-4d48-9f88-47bb5185f0d0")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(url)
+
+response = http.request(request)
+puts response.read_body</code></pre>
+<pre><code class="python language-python">import requests
+import json
+
+r = requests.get("https://api.sportradar.com/golf/trial/stream/pga/scorecards/subscribe",
+    params = {'api_key': 'your_api_key', 'tournament': 'sd:tournament:6180b261-9595-4b90-a706-58f54258da71', 'player': 'sd:player:45a571da-a1e4-4d48-9f88-47bb5185f0d0'},
+    allow_redirects=False)
+
+redirect_url = r.headers['Location']
+r = requests.get(redirect_url, stream=True)
+
+for line in r.iter_lines():
+    # filter out keep-alive new lines
+    if line:
+        decoded_line = line.decode('utf-8')
+        print(json.loads(decoded_line))</code></pre>
+<pre><code class="shell language-shell">curl -L GET 'api.sportradar.us/golf/trial/stream/pga/scorecards/subscribe?api_key={your_api_key}&amp;amp;tournament=sd:tournament:6180b261-9595-4b90-a706-58f54258da71&amp;amp;player=sd:player:45a571da-a1e4-4d48-9f88-47bb5185f0d0'</code></pre>
+<p>In addition to the URL parameters listed above, you can filter the Scorecard information with one or more of the following optional query string parameters.</p>
+<table>
+<thead><tr>
+<td style="padding:20px;background-color:#00003c;color:white;width:57%;text-align:left;cursor:default;">
+<b>Note</b>: Optional query string parameters must be added after your API key with an ampersand (&amp;). If you are filtering for more than one result, separate the results with a comma (,) and no spaces.
+</td>
+</tr></thead><tbody>
+</tbody></table>
+<p>Replace placeholders with the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th id="parameter">Parameter</th>
+<th id="description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tournament</code></td>
+<td>Tournament id expressed as: sd:tournament:{tournament_id}. <br>Example: sd:tournament:9db12181-b55d-4e4f-8c18-936f4c7c7e2d</td>
+</tr>
+<tr>
+<td><code>tournament_type</code></td>
+<td>Tournament type expressed as: {tournament_type}. <br>Example: tournament_type=stroke</td>
+</tr>
+<tr>
+<td><code>scoring_system</code></td>
+<td>Scoring system expressed as: {scoring_system}. <br>Example: scoring_system=match</td>
+</tr>
+<tr>
+<td><code>round</code></td>
+<td>Round sequence expressed as: {round}. <br>Example: round=2</td>
+</tr>
+<tr>
+<td><code>player</code></td>
+<td>Player id expressed as: sd:player:{player_id}. <br>Example: sd:player:da226913-b804-48de-adbf-96e956eb75ac</td>
+</tr>
+<tr>
+<td><code>locale</code></td>
+<td>Locale expressed as 2 letter code: locale={language_code} <br>Example: locale=en <br>Valid codes: en (English), ru (Russian), zh (simplified Chinese), de (German), fr (French), it (Italian), es (Spanish), ja (Japanese), nl (Dutch), se (Swedish), no (Norwegian), fi (Finnish), ko (Korean), da (Danish).</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#top">Return to top</a></p>
+<p><a id="FAQGolfv3"></a></p>
+<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+<p><strong>Q: What format are date fields presented in?</strong></p>
+<p>A: When we present date only values we present these in the ISO 8601 standard format.
+<br>
+ex: 2013-04-03
+<br>
+We use these for attributes that have date and no time (such as birthdate). For more information: <a href="https://en.wikipedia.org/wiki/ISO_8601">https://en.wikipedia.org/wiki/ISO_8601</a>
+</p>
+<p><strong>Q: What format are the date/time fields presented in?</strong></p>
+<p>A: All of our Date/Time attributes are in UTC, presented in the ISO 8601 standard format.
+<br>
+ex: 2013-04-03T18:15:00+00:00
+<br>
+For more information: <a href="https://en.wikipedia.org/wiki/ISO_8601">https://en.wikipedia.org/wiki/ISO_8601</a></p>
+<p><strong>Q: Where do I find a list of golfers participating in a particular tournament?</strong></p>
+<p>A: The Tournament Summary feed gives you a list of those golfers participating in the tournament.</p>
+<p><strong>Q: What are the valid Event types?</strong></p>
+<p>A: Here are the valid event types:</p>
+<ul>
+<li>stroke</li>
+<li>match</li>
+<li>cup</li>
+<li>team</li>
+</ul>
+<p><strong>Q: What are the valid Match formats?</strong></p>
+<p>A: Here are the valid match formats:</p>
+<ul>
+<li>singles</li>
+<li>fourball</li>
+<li>foursomes</li>
+</ul>
+<p><strong>Q: What are the valid Match types?</strong></p>
+<p>A: Here are the valid match types:</p>
+<ul>
+<li>regular</li>
+<li>semifinal</li>
+<li>championship</li>
+<li>consolation</li>
+</ul>
+<p><strong>Q: What are the valid player statuses?</strong></p>
+<p>A: The only player status revolves around a player’s status for a particular tournament. If the player is still competing in the tournament, no status attribute will appear. Here are all remaining player statuses and their definitions:</p>
+<ul>
+<li>CUT – The player has missed the cut of a tournament</li>
+<li>WD – The player has withdrawn from a tournament</li>
+<li>MDF – The player made the cut, but did not finish the tournament</li>
+<li>DQ – The player has been disqualified</li>
+<li>DNS – The player was scheduled to compete in the tournament, but never started</li>
+</ul>
+<p><strong>Q: What are the valid tournament and round statuses and their definitions?</strong></p>
+<p>A: Here are the valid tournament and round statuses:</p>
+<p><strong><span class="underline">Round</span></strong></p>
+<ul>
+<li>scheduled - The round is scheduled to occur.</li>
+<li>inprogress – The round is in progress.</li>
+<li>delayed – The round has been delayed.</li>
+<li>suspended - The round was suspended.</li>
+<li>cancelled – The round was cancelled.</li>
+<li>complete – The round is over, but stat validation is not complete.</li>
+<li>closed – The round is over and the stats have been validated.</li>
+<li>reopened – The round stats are in the process of being corrected.</li>
+</ul>
+<p><strong><span class="underline">Tournament</span></strong></p>
+<ul>
+<li>scheduled - The tournament is scheduled to occur.</li>
+<li>inprogress – The tournament is in progress.</li>
+<li>delayed – The tournament was delayed.</li>
+<li>cancelled – The tournament was cancelled.</li>
+<li>created – The tournament has been created and we have begun logging the field and tee times when available.</li>
+<li>complete – The tournament is over, but stat validation is not complete.</li>
+<li>closed – The tournament is over and the stats have been validated.</li>
+<li>playoff – The tournament is in a playoff.</li>
+<li>reopened – The tournament stats are in the process of being corrected.</li>
+</ul>
+<p><strong>Q: Do you provide season statistics for all golfers?</strong></p>
+<p>A: We provide season statistics for all golfers who have earned Fed Ex Cup points. Season statistics are validated and corrected on a weekly basis. World Golf Rank for each season will reflect the players ranking following the completion of the Tour Championship, not the end of the year. For more information on timing, please see our Golf Weekly Workflow document (<a href="https://developer.sportradar.us/page/Golf_Workflow">https://developer.sportradar.us/page/Golf_Workflow</a>).</p>
+<p><strong>Q: Course information in the Tournament Schedule feed does not match the course information for a specific tournament, why is that?</strong></p>
+<p>A: A full list of course attributes can be found in 2 feeds: Tournament Schedule and Tournament Summary. The Tournament Schedule feed provides the generic course layout and yardage. Courses can be changed for a specific tournament. To find the official course layout and yardage for a specific tournament, you need to use the Tournament Summary feed.</p>
+<p><strong>Q: How do you handle the points reset associated with the Tour Championship and the Fed Ex Cup?</strong></p>
+<p>A: The top 30 players have a point reset applied. We will reset the point total for each player involved in the Tour Championship tournament. Players ranked 31 and above will have their points reflect their correct total prior to the reset applied to those players who qualified. After the Tour Championship, the top 30 player’s points will reflect the reset value plus points earned in the Tour Championship tournament.</p>
+<p><strong>Q: How is playoff data represented within the feeds?</strong></p>
+<p>A: Play-off data will appear within the Tournament Leaderboard feed and Scorecard Per Round. In the Tournament Leaderboard feed, a play-off element will appear that includes all golfers taking part in the play-off. As with other rounds within the tournament, the play-off section will include the golfer’s current score as well as a summary of their current round score. An example is presented on the right.</p>
+<figure><pre><code class="lang-xml">&lt;playoff&gt;<br>
+  &lt;player first_name="Jordan" last_name="Spieth" country="UNITED STATES" id="3e4963cb-6e80-4393-85cf-2aecec453c4a" position="1" score="-1" strokes="10"&gt;<br>
+    &lt;rounds&gt;<br>
+      &lt;round score="-1" strokes="10" thru="3" eagles="0" birdies="1" pars="2" bogeys="0" double_bogeys="0" other_scores="0" holes_in_one="0" sequence="1"/&gt;<br>
+    &lt;/rounds&gt;<br>
+  &lt;/player&gt;<br>
+  &lt;player first_name="Sean" last_name="O'Hair" country="UNITED STATES" id="e260788d-657a-4d72-9766-82f27a9c66ba" position="2" tied="true" score="0" strokes="11"&gt;
+    &lt;rounds&gt;
+      &lt;round score="0" strokes="11" thru="3" eagles="0" birdies="0" pars="3" bogeys="0" double_bogeys="0" other_scores="0" holes_in_one="0" sequence="1"/&gt;
+    &lt;/rounds&gt;
+  &lt;/player&gt;
+  &lt;player first_name="Patrick" last_name="Reed" country="UNITED STATES" id="12195ed9-3fcd-486a-86b4-1ec726d201cd" position="2" tied="true" score="0" strokes="11"&gt;
+    &lt;rounds&gt;
+      &lt;round score="0" strokes="11" thru="3" eagles="0" birdies="0" pars="3" bogeys="0" double_bogeys="0" other_scores="0" holes_in_one="0" sequence="1"/&gt;
+    &lt;/rounds&gt;
+  &lt;/player&gt;
+&lt;/playoff&gt;
+</code></pre></figure>
+<p>If a tournament plays a complete playoff round to determine the winner, the golfer’s round information will also be available in the Scorecard Per Round feed. You can generate the Scorecard By Round by substituting the “rounds” variable with “playoff”, like within the following example:</p>
+<p><a href="https://api.sportradar.us/golf/trial/v3/scorecards/pga/2017/tournaments/d0a413de-627a-481c-825a-142ec55239a5/playoff/1/scores.xml?api_key="><span class="underline">https://api.sportradar.us/golf/trial/v3/scorecards/pga/2017/tournaments/d0a413de-627a-481c-825a-142ec55239a5/playoff/1/scores.xml?api_key=</span></a></p>
+<p><strong>Q: What are the possible values for season status?</strong></p>
+<p>A: The supported season statuses are:</p>
+<ul>
+<li>scheduled</li>
+<li>inprogress</li>
+<li>closed</li>
+</ul>
+<p><strong>Q: How do I locate the TTL (Time to Live)/cache on an API endpoint? </strong></p>
+<p>A: The cache (in seconds) can be accessed in the returned header information on each RESTful API call, under <code>cache-control</code>.
+<br>
+ex. <code>cache-control: <b>max-age=1</b>, public, <b>s-maxage=1</b></code> or<br> <code>cache-control: public, must-revalidate, <b>max-age=120</b></code><br><br>
+Note that, for select game-centric endpoints, the TTL may adjust when an event is live. This information is available for each endpoint on our developer portal.</p>
+<p><a href="#top">Return to top</a><br>
+        </p></div><div class="grid-nav offside offside--left"><div id="docs-nav-inner" class="padding-top"><ul id="nav-docs">
+<li class="active"><a href="https://developer.sportradar.com/docs/read/Home">Documentation</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/american_football" class="js-ajax-ignore">Football (American Football)</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/american_football/NFL_v7">NFL v7</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/american_football/NFL_v6">NFL v6</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/american_football/NFL_v5">NFL v5</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/american_football/NCAA_Mens_Football_v7">NCAA Men's Football v7</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/american_football/USFL_v7">USFL v7</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/american_football/Global_American_Football_v2">Global American Football v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/american_football/Global_American_Football_v1">Global American Football v1</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/football_soccer" class="js-ajax-ignore">Football (Soccer)</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/football_soccer/Soccer_Advanced_Analytics_v1">Soccer Advanced Analytics v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/football_soccer/Soccer_Extended_v4">Soccer Extended v4</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/football_soccer/Soccer_v4">Soccer v4</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/australian_rules_football" class="js-ajax-ignore">Australian Rules Football</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/australian_rules_football/Australian_Rules_Football_v3">Australian Rules Football v3</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/australian_rules_football/Australian_Rules_Football_v2">Australian Rules Football v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/australian_rules_football/Australian_Rules_Football_v1">Australian Rules Football v1</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/baseball" class="js-ajax-ignore">Baseball</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/baseball/MLB_v7_with_Statcast">MLB v7 with Statcast</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseball/MLB_v7">MLB v7</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseball/MLB_v66">MLB v6.6</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseball/MLB_v65">MLB v6.5</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseball/MLB_v6">MLB v6</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseball/MLB_v5">MLB v5</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseball/Global_Baseball_v2">Global Baseball v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseball/Global_Baseball_v1">Global Baseball v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseball/MLB_Historical_v1">MLB Historical v1</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball" class="js-ajax-ignore">Basketball</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NBA_v8">NBA v8</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NBA_v7">NBA v7</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NBA_v5">NBA v5</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NBA_v4">NBA v4</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/WNBA_v8">WNBA v8</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/WNBA_v7">WNBA v7</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/WNBA_v4">WNBA v4</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/WNBA_v3">WNBA v3</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NBA_G_League_v8">NBA G League v8</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NBA_G_League_v7">NBA G League v7</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NBA_G_League">NBA G League v5</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NCAA_Mens_Basketball_v8">NCAA Men's Basketball v8</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NCAA_Mens_Basketball_v7">NCAA Men's Basketball v7</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NCAA_Mens_Basketball_v4">NCAA Men's Basketball v4</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NCAA_Mens_Basketball_v3">NCAA Men's Basketball v3</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NCAA_Womens_Basketball_v8">NCAA Women's Basketball v8</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NCAA_Womens_Basketball_v7">NCAA Women's Basketball v7</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NCAA_Womens_Basketball_v3">NCAA Women's Basketball v3</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/Global_Basketball_v2">Global Basketball v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/Global_Basketball_v1">Global Basketball v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/basketball/NBA_Historical_v1">NBA Historical v1</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/combat_sports" class="js-ajax-ignore">Combat Sports</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/combat_sports/MMA_v2">MMA v2</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/cricket" class="js-ajax-ignore">Cricket</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/cricket/Cricket_v2">Cricket v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/cricket/Cricket_Legacy_v2">Cricket Legacy v2</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/editorial_content" class="js-ajax-ignore">Editorial Content</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/editorial_content/Editorial_Content_v3">Editorial Content v3</a></li>
+</ul>
+</li>
+<li class="active"><a href="https://developer.sportradar.com/docs/read/golf" class="js-ajax-ignore">Golf</a><ul>
+<li class="active current-page"><a href="https://developer.sportradar.com/docs/read/golf/Golf_v3" class="active js-ajax-ignore">Golf v3</a><ul><li><a href="#golf-api-overview">Golf API Overview</a></li><li><a href="#golf-api-map">Golf API Map</a></li><li><a href="#tour-coverage">Tour Coverage</a></li><li><a href="#daily-change-log">Daily Change Log</a></li><li><a href="#official-world-golf-ranking">Official World Golf Ranking</a></li><li><a href="#player-profile">Player Profile</a></li><li><a href="#player-profile-live">Player Profile Live</a></li><li><a href="#player-statistics">Player Statistics</a></li><li><a href="#players">Players</a></li><li><a href="#scorecards-per-round">Scorecards Per Round</a></li><li><a href="#seasons">Seasons</a></li><li><a href="#tee-times-per-round">Tee Times Per Round</a></li><li><a href="#tournament-hole-statistics">Tournament Hole Statistics</a></li><li><a href="#tournament-leaderboard">Tournament Leaderboard</a></li><li><a href="#tournament-schedule">Tournament Schedule</a></li><li><a href="#tournament-summary">Tournament Summary</a></li><li><a href="#push-feeds">Push Feeds</a></li><li><a href="#push-leaderboard">Push Leaderboard</a></li><li><a href="#push-scorecard">Push Scorecard</a></li><li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li></ul></li>
+<li><a href="https://developer.sportradar.com/docs/read/golf/Golf_v2">Golf v2</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/handball" class="js-ajax-ignore">Handball</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/handball/Handball_v2">Handball v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/handball/Handball_v1">Handball v1</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/hockey" class="js-ajax-ignore">Hockey</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/hockey/NHL_v7">NHL v7</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/hockey/NHL_v6">NHL v6</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/hockey/NHL_v5">NHL v5</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/hockey/NCAA_Mens_Hockey_v3">NCAA Mens Hockey v3</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/hockey/Global_Ice_Hockey_v2">Global Ice Hockey v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/hockey/Global_Ice_Hockey_v1">Global Ice Hockey v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/hockey/NHL_Historical_v1">NHL Historical v1</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/images" class="js-ajax-ignore">Images</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/images/Images_v3">Images v3</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/Insights" class="js-ajax-ignore">Insights</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/insights/Insights_User_Interface">Insights User Interface</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/NBA_Insights_v2">NBA Insights v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/NFL_Insights_v2">NFL Insights v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/NHL_Insights_v2">NHL Insights v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/MLB_Insights_v2">MLB Insights v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/NBA_Betting_Splits_v2">NBA Betting Splits v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/NHL_Betting_Splits_v2">NHL Betting Splits v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/MLB_Betting_Splits_v2">MLB Betting Splits v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/NFL_Betting_Splits_v2">NFL Betting Splits v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/NCAAFB_Betting_Splits_v2">NCAAFB Betting Splits v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/NCAAMB_Betting_Splits_v2">NCAAMB Betting Splits v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/NCAAWB_Betting_Splits_v2">NCAAWB Betting Splits v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/Soccer_Betting_Splits_v2">Soccer Betting Splits v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/NBA_Insights_v1">NBA Insights v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/NHL_Insights_v1">NHL Insights v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/MLB_Insights_v1">MLB Insights v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/insights/NFL_Insights_v1">NFL Insights v1</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/odds" class="js-ajax-ignore">Odds</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/odds/Odds_Comparison_v1">Odds Comparison Regular</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/odds/Odds_Comparison_Futures">Odds Comparison Futures</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/odds/Odds_Comparison_Player_Props">Odds Comparison Player Props</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/odds/Odds_Comparison_Prematch">Odds Comparison Prematch</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/odds/Probabilities_v1">Probabilities v1</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/OnAir">Broadcast Graphics</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/racing" class="js-ajax-ignore">Racing</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/racing/NASCAR_v3">NASCAR v3</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/racing/Classic_NASCAR_v3">Classic NASCAR v3</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/racing/Formula_1_v2">Formula 1 v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/racing/MotoGP_v2">MotoGP v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/racing/IndyCar_v2">IndyCar v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/racing/Formula_E_v2">Formula E v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/racing/Rally_v2">Rally v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/racing/Indy_Lights_v2">Indy Lights v2</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/rugby" class="js-ajax-ignore">Rugby</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/rugby/Rugby_v3">Rugby v3</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/rugby/Rugby_v2">Rugby v2</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/tennis" class="js-ajax-ignore">Tennis</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/tennis/Tennis_v3">Tennis v3</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/tennis/Tennis_v2">Tennis v2</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/widgets" class="js-ajax-ignore">Widgets</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/widgets/General_Information">General Information</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/widgets/MLB_Widgets">MLB Widgets</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/widgets/NBA_Widgets">NBA Widgets</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/widgets/NCAA_Football">NCAA Football Widgets</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/widgets/NCAA_Mens_Basketball">NCAA Men's Basketball Widgets</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/widgets/NFL_Widgets">NFL Widgets</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/widgets/NHL_Widgets">NHL Widgets</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/widgets/Golf">Golf Widgets</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/widgets/WNBA_Widgets">WNBA Widgets</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/widgets/Soccer">Soccer Widgets</a></li>
+</ul>
+</li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage" class="js-ajax-ignore">Baseline Sports Coverage</a><ul>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Badminton_v2">Badminton v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Badminton_v1">Badminton v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Bandy_v2">Bandy v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Bandy_v1">Bandy v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Beach_Soccer_v2">Beach Soccer v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Beach_Soccer_v1">Beach Soccer v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Curling_v2">Curling v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Curling_v1">Curling v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Cycling_v2">Cycling v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Darts_v2">Darts v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Darts_v1">Darts v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Field_Hockey_v2">Field Hockey v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Field_Hockey_v1">Field Hockey v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Floorball_v2">Floorball v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Floorball_v1">Floorball v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Futsal_v2">Futsal v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Futsal_v1">Futsal v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Pesapallo_v2">Pesapallo v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Pesapallo_v1">Pesapallo v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Snooker_v2">Snooker v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Snooker_v1">Snooker v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Squash_v2">Squash v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Squash_v1">Squash v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Table_Tennis_v2">Table Tennis v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Volleyball_Beach_v2">Volleyball (Beach) v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Volleyball_Beach_v1">Volleyball (Beach) v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Volleyball_Indoor_v2">Volleyball (Indoor) v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Volleyball_Indoor_v1">Volleyball (Indoor) v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Waterpolo_v2">Waterpolo v2</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Waterpolo_v1">Waterpolo v1</a></li>
+<li><a href="https://developer.sportradar.com/docs/read/baseline_sports_coverage/Winter_Sports_v1">Winter Sports v1</a></li>
+</ul>
+</li>
+</ul></div></div></div></div></main><footer class="footer" id="footer"><div id="footer-1-wrapper">
+    <div class="container">
+        <a class="logo-contact" href="https://developer.sportradar.com/contact"><img src="https://developer.sportradar.com/files/contact.png"></a>
+        <div class="text-small">
+            <div class="row">
+                <div class="grid-third">
+                    <h2 class="h4 no-padding-top no-margin-bottom">Sportradar</h2>
+                    <p>
+                        150 South 5th St. Suite 400<br>
+                        Minneapolis, MN 55402<br>
+                        USA
+                    </p>
+                </div>
+                <div class="grid-third">
+                    <p>
+                        <a href="mailto:us-sales@sportradar.com">us-sales@sportradar.com</a><br>
+                        <a href="mailto:us-jobs@sportradar.com">us-jobs@sportradar.com</a><br>
+                        Main: 612-361-4100<br>
+                        Sales: 612-361-4102<br>
+                        <a href="https://developer.sportradar.com/Terms_and_Conditions">Terms and Conditions</a><br>
+                    </p>
+                </div>
+                <div class="grid-third">
+                    <h2 class="h4 no-padding-top">Sportradar is Social</h2>
+                    <ul class="list-inline">
+                        <li>
+                            <a class="link-icon" href="https://www.facebook.com/sportradarofficial/">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="height:1em;width:1em;" viewBox="0 0 48 48" aria-labelledby="title-facebook"><title id="title-facebook">Facebook</title><path fill="#ffffff" d="M31.5 7.5c-4.142 0-7.5 3.358-7.5 7.5v4.5h-6v6h6v21h6v-21h6.75l1.5-6H30V15c0-.828.672-1.5 1.5-1.5H39v-6h-7.5z"></path></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="link-icon" href="https://twitter.com/Sportradar">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="height:1em;width:1em;" viewBox="0 0 48 48" aria-labelledby="title-twitter"><title id="title-twitter">Twitter</title><path fill="#ffffff" d="M48 9.113c-1.766.783-3.664 1.313-5.656 1.55 2.033-1.218 3.595-3.148 4.33-5.447-1.903 1.13-4.01 1.948-6.254 2.39-1.796-1.914-4.356-3.11-7.188-3.11-5.44 0-9.848 4.41-9.848 9.847 0 .772.087 1.523.255 2.244-8.185-.41-15.442-4.33-20.3-10.29C2.494 7.753 2.01 9.445 2.01 11.25c0 3.416 1.738 6.43 4.38 8.196-1.613-.05-3.132-.494-4.46-1.232v.124c0 4.77 3.395 8.75 7.9 9.656-.827.225-1.697.346-2.595.346-.635 0-1.25-.062-1.853-.177 1.253 3.912 4.89 6.76 9.2 6.84-3.37 2.64-7.618 4.215-12.23 4.215-.796 0-1.58-.047-2.35-.138 4.358 2.794 9.534 4.425 15.096 4.425 18.114 0 28.02-15.006 28.02-28.02 0-.426-.01-.85-.03-1.273C45.01 12.824 46.68 11.09 48 9.114z"></path></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="link-icon" href="https://www.linkedin.com/company/sportradar">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="height:1em;width:1em;" viewBox="0 0 48 48" aria-labelledby="title-linkedin">LinkedIn<title id="title-"></title><path fill="#ffffff" d="M18 18h8.302v4.255h.12C27.575 20.183 30.4 18 34.616 18 43.38 18 45 23.455 45 30.55V45h-8.653V32.19c0-3.056-.063-6.986-4.5-6.986-4.508 0-5.196 3.327-5.196 6.764V45H18V18zM3 18h9v27H3V18zM12 10.5c0 2.485-2.015 4.5-4.5 4.5S3 12.985 3 10.5 5.015 6 7.5 6 12 8.015 12 10.5z"></path>
+                            </svg></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p><a href="https://sportradar.com/privacy-notice/">Privacy Policy</a> © Sportradar, a subsidiary of Sportradar AG</p>
+        </div>
+    </div>
+</div><nav id="nav-secondary-wrapper"><div class="nav-secondary container" id="nav-secondary"><ul id="nav-secondary-list"></ul></div></nav><div id="footer-2-wrapper">
+	<div class="container text-center-large">
+		<p class="margin-bottom-small"><img height="37" width="101" src="https://developer.sportradar.com/files/FB_techpartners.png"></p>
+		<p></p>
+	</div>
+</div></footer><div id="mashery-made"><div class="container"><p></p></div></div></div></div>
+<script type="text/javascript">
+//<![CDATA[
+/*!
+ * Templates & Initializations
+ * sportradar v2.0.0
+ * Portal Theme Starter Kit v2.6.1 - Default Theme
+ * http://github.com/mashery/portal-theme-starter-kit
+ */
+
+/**
+ * Theme Templates
+ */
+
+// Base layout
+// The markup structure that all of the content will get loaded into.
+// {{layout.navUser}} - The wrapper for the user navigation.
+// {{layout.navPrimary}} - The wrapper for the primary navigation.
+// {{layout.main}} - The wrapper for the main content area.
+// {{layout.footer1}} - The wrapper for the first footer content area.
+// {{layout.navSecondary}} - The wrapper for the secondary navigation.
+// {{layout.footer2}} - The wrapper for the second footer content area.
+portalOptions.templates.layout =
+	'<a class="screen-reader screen-reader-focusable" href="#main-wrapper">Skip to content</a>' +
+	'{{layout.navPrimary}}' +
+	'{{layout.navUser}}' +
+	'{{layout.main}}' +
+	'<footer class="footer" id="footer">' +
+		'{{layout.footer1}}' +
+		'{{layout.navSecondary}}' +
+		'{{layout.footer2}}' +
+	'</footer>';
+
+// Primary Navigation
+// The primary navigation content for the Portal.
+// {{content.menuToggle}} - The label on the button to expand and collapse the navigation menu on smaller screens.
+portalOptions.templates.primaryNav = function () {
+	var template =
+		'<div class="nav-primary nav-wrap" id="nav-primary">' +
+			'<div class="container padding-top-small padding-bottom-small">' +
+				'<a id="logo" class="logo" href="/">{{content.logo}}</a>' +
+				(mashery.contentType === 'docs' ? '<div class="nav-toggle-wrap">' : '' ) +
+					'<a role="button" class="nav-toggle" id="nav-primary-toggle" data-nav-toggle=".nav-collapse" href="#">&#9776; Menu</a>' +
+					(mashery.contentType === 'docs' ? '<a role="button" class="nav-toggle margin-right js-scroll-ignore" id="nav-docs-toggle" href="#">&#8942; Docs Navigation</a>' : '') +
+				(mashery.contentType === 'docs' ? '</div>' : '' ) +
+				'<div class="nav-menu nav-collapse" id="nav-primary-menu">' +
+					'<ul class="nav" id="nav-primary-list">' +
+						'{{content.navItemsPrimary}}' +
+					'</ul>' +
+				'</div>' +
+			'</div>' +
+		'</div>';
+	return template;
+};
+
+// User Navigation
+// The navigation menu for sign in, registration, account, and logout links.
+portalOptions.templates.userNav =
+	'<div class="nav-user container" id="nav-user">' +
+		'<div class="nav-menu nav-collapse" id="nav-user-menu">' +
+			'<ul class="nav-user-list list-inline text-muted text-right-large padding-top-small padding-bottom-small no-margin-bottom" id="nav-user-list">' +
+				'{{content.navItemsUser}}' +
+			'</ul>' +
+		'</div>' +
+	'</div>';
+
+// Documentation
+// The layout for API documentation. This page includes an automatically generated navigation menu.
+// {{content.subheading}} - The heading above the documentation sub-navigation.
+portalOptions.templates.docs =
+	'<div class="main" id="main">' +
+		'<div class="row row-docs">' +
+			'<div class="grid-docs grid-flip content">' +
+				'<h1>{{content.heading}}</h1>' +
+				'{{content.main}}' +
+			'</div>' +
+			'<div class="grid-nav">' +
+				'<div id="docs-nav-inner" class="padding-top">' +
+					'<ul id="nav-docs">{{content.secondary}}</ul>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+	'</div>';
+
+// Footer 1
+// The first of two footer content sections.
+portalOptions.templates.footer1 = function () {
+	var template = mashery.dom.querySelector('#footer [data-footer-template-1]');
+	if (!template) return '';
+	return template.innerHTML;
+};
+
+// Footer 2
+// The first of two footer content sections.
+portalOptions.templates.footer2 = function () {
+	var template = mashery.dom.querySelector('#footer [data-footer-template-2]');
+	if (!template) return '';
+	return template.innerHTML;
+};
+
+// Enable full width layouts
+window.portalOptions.templates.page = function () {
+	return	'<div class="main container container-small content" id="main">' +
+				(mashery.globals.noHeader ? '' : '<h1>{{content.heading}}</h1>') +
+				'{{content.main}}' +
+			'</div>';
+};
+
+// Add theme style hook
+document.documentElement.className += ' js-theme-default';
+
+
+/**
+ * Load custom typeface
+ */
+window.addEventListener('portalAfterInit', function () {
+	m$.loadJS('https://cdn.jsdelivr.net/gh/bramstein/fontfaceobserver@2.0.13/fontfaceobserver.standalone.js', function () {
+		m$.loadCSS('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i');
+		var font = new FontFaceObserver('Source Sans Pro');
+		font.load().then(function () {
+			document.documentElement.classList.add('fonts-loaded');
+		});
+	});
+}, false);
+
+
+/**
+ * Favicon
+ * Add a favicon/tab icon for your Portal.
+ */
+
+// If true, inject a favicon
+window.portalOptions.favicon = true;
+
+// The favicon sizes
+window.portalOptions.faviconSizes = '16x16 24x24 32x32 64x64';
+
+
+
+/**
+ * Logo
+ * Add a custom logo. Accepts any markup as a string (`<img src>`, `<svg></svg>`, etc.).
+ */
+portalOptions.logo = '<img height="35" width="202" alt="Sportradar Developer Portal" src="https://developer.sportradar.com/files/logo.svg">';
+
+
+// Sign In
+// The sign in page.
+portalOptions.labels.signin = {
+    main: '<p class="h3">Sign in to {{mashery.area}} using your Mashery ID.</p>', // The message above the sign in form
+};
+
+
+/**
+ * Validate a form with JS
+ * @param  {String} form       A selector for the form
+ * @param  {Array}  checkGroup Checkbox groups to validate
+ */
+var formValidation = function (form, checkGroup) {
+
+	'use strict';
+
+	//
+	// Variables
+	//
+
+	var form = document.querySelector(form);
+	if (!form) return;
+	var fields = Array.prototype.slice.call(form.querySelectorAll('input.require:not(#members-sr_contact), textarea.require, select.require'));
+	var fieldError = 'This value is not allowed to be blank.';
+
+
+	//
+	// Methods
+	//
+
+	var shiftFocus = function () {
+		var field = form.querySelector('ul.error');
+		if (!field) return;
+		if (!field.hasAttribute('tabindex')) {
+			field.setAttribute('tabindex', '-1');
+		}
+		field.focus();
+	};
+
+	var removeErrors = function () {
+		var errors = Array.prototype.slice.call(form.querySelectorAll('ul.error'));
+		errors.forEach(function (error) {
+			var field = error.parentNode.querySelector('.failure');
+			error.parentNode.removeChild(error);
+			if (field) {
+				field.classList.remove('failure');
+			}
+		});
+	};
+
+	var showFormError = function () {
+
+		// If error already exists, use it
+		var existing = form.querySelector('ul.failure');
+		if (existing) return;
+
+		// Otherwise, create one
+		var error = document.createElement('ul');
+		error.className = 'failure';
+		error.innerHTML = '<li>Please correct the noted errors.</li>';
+		form.insertBefore(error, form.firstChild);
+
+	};
+
+	var showFieldError = function (field) {
+
+		// Get target location
+		var target = field;
+		if (field.type === 'radio') {
+
+			// Get radio button last input
+			var allFields = form.querySelectorAll('[name="' + field.name + '"]');
+			target = allFields[allFields.length - 1].parentNode;
+
+			// If an error is already there, bail
+			if (target.parentNode.querySelector('ul.error li')) return
+				;
+		}
+
+		// Insert error
+		var error = document.createElement('ul');
+		error.className = 'error';
+		error.innerHTML = '<li>' + fieldError + '</li>';
+		target.parentNode.insertBefore(error, target.nextSibling);
+		target.classList.add('failure');
+
+	};
+
+	var isValid = function (field) {
+		if (field.hasAttribute('hidden') || field.type === 'submit' || field.type === 'hidden') return true;
+		if (field.type !== 'radio' && field.value.length > 0) return true;
+		if (field.type === 'radio') {
+			var allFields = Array.prototype.slice.call(form.querySelectorAll('[name="' + field.name + '"]'));
+			var valid = false;
+			allFields.forEach(function (radio) {
+				if (radio.checked) {
+					valid = true;
+				}
+			});
+			return valid;
+		}
+		return false;
+	};
+
+	/**
+	 * Validate form
+	 */
+	var submitHandler = function (event) {
+
+		// // Stop form from submitting
+		// event.preventDefault();
+
+		// Default form validity
+		var valid = true;
+
+		// Remove existing errors
+		removeErrors();
+
+		// Validate all fields
+		fields.forEach(function (field) {
+			if (isValid(field)) return;
+			showFieldError(field);
+			valid = false;
+		});
+
+		// Checkboxes
+		if (checkGroup && checkGroup.length > 0) {
+			checkGroup.forEach(function (checkboxes) {
+
+				var selectedCheckboxes = checkboxes.checkboxes.filter(function (selector) {
+					var checkbox = document.querySelector(selector);
+					return (!!checkbox && checkbox.checked);
+				});
+
+				var isHidden = checkboxes.checkboxes.filter(function (selector) {
+					var checkbox = document.querySelector(selector);
+					return (!!checkbox && checkbox.closest('[hidden]'));
+				});
+
+				if (isHidden.length > 0) return;
+
+				if (selectedCheckboxes.length < 1) {
+					showFieldError(document.querySelector(checkboxes.legend));
+					valid = false;
+				}
+
+			});
+		}
+
+		if (valid) return;
+
+		// Stop form from submitting
+		event.preventDefault();
+		showFormError();
+		shiftFocus();
+
+	};
+
+
+	//
+	// Event Listeners
+	//
+
+	form.addEventListener('submit', submitHandler, false);
+
+};
+
+
+/**
+ * Initialize plugins
+ */
+window.addEventListener('portalAfterRender', function () {
+
+	// Expand-and-collapse nav on small viewports
+	astro.init();
+
+	// Enhanced documentation
+	var docs = {};
+	if (document.querySelector('.better-docs-nav')) {
+		docs = new BetterDocs('.content', {
+			langs: {
+				bash: {
+					selector: 'bash',
+					title: 'Bash'
+				},
+				ruby: {
+					selector: 'ruby',
+					title: 'Ruby'
+				},
+				python: {
+					selector: 'python',
+					title: 'Python'
+				}
+			},
+			langDefault: 'bash',
+			tocSelector: 'h2',
+			wideLayout: true,
+		});
+		var betterDocsNav = document.querySelector('.better-docs-nav');
+		var betterDocsHeader = document.querySelector('h1');
+		if (betterDocsNav && betterDocsHeader) {
+			betterDocsHeader.before(betterDocsNav);
+		}
+	}
+	// Destroy instantiation on Ajax page reload
+	window.addEventListener('portalBeforeRender', function () {
+		if ('destroy' in docs) {
+			docs.destroy();
+		}
+	}, false);
+
+	// Conditional content
+	// Add logged-in/logged-out class
+	if (window.mashery.loggedIn) {
+		document.documentElement.classList.add('is-logged-in');
+		document.documentElement.classList.remove('is-logged-out');
+	} else {
+		document.documentElement.classList.add('is-logged-out');
+		document.documentElement.classList.remove('is-logged-in');
+	}
+
+	// Responsive iFrame Videos
+	fluidvids.init({
+		selector: ['iframe', 'object'], // runs querySelectorAll()
+		players: ['www.youtube.com', 'player.vimeo.com'] // players to support
+	});
+
+	// Get the latest blog posts
+	latestBlogPosts();
+
+	// Smooth scrolling to anchor links
+	var scroll = {};
+	scroll = new SmoothScroll('.category-page #main-wrapper a[href*="#"], .category-docs #main-wrapper a[href*="#"], .category-docs #main-wrapper a[href*="#"], .category-blogall #main-wrapper a[href*="#"], .category-blogsingle #main-wrapper a[href*="#"], #nav-docs a[href*="#"]', {
+		ignore: '.js-scroll-ignore, .tabs a'
+	});
+
+	// Destroy instantiation on Ajax page reload
+	window.addEventListener('portalBeforeRender', function () {
+		if ('destroy' in scroll) {
+			scroll.destroy();
+		}
+	}, false);
+
+	// Language translation
+	// window.addEventListener('portalAfterRender', function () {
+	// 	// NOTE: You should update this with your desired options, languages, and translations.
+	// 	// Details at https://developer.mashery.com/docs/customizing_your_portal/plugins/Translate
+	// 	var translate = new Translate();
+	// }, false);
+
+	// Sticky footer
+	if (mashery.contentType === 'docs') {
+		stickyFooter.destroy();
+	} else {
+		stickyFooter.init('#footer');
+		window.setTimeout(function () {
+			stickyFooter.setPush();
+		}, 250);
+	}
+
+	// Toggle Tabs
+	tabs();
+
+	// Docs nav
+	if (mashery.contentType === 'docs') {
+		stickyDocs.init(function () {
+			scrollspy.cacheOffsets();
+		});
+		scrollspy.init();
+	} else {
+		stickyDocs.destroy();
+		scrollspy.destroy();
+	}
+
+	// Docs TOC on empty pages
+	docsBodyTOC();
+
+	//Offside.js
+	var myOffside;
+	if ('destroy' in offside) {
+		offside.destroy();
+	}
+	if (mashery.contentType === 'docs') {
+		myOffside = offside('.grid-nav', {
+			slidingElementsSelector:'.grid-docs',
+			buttonsSelector: '#nav-docs-toggle',
+		});
+	}
+
+	// Docs navigation expand-and-collapse
+	if ('destroy' in docsNavCollapse) {
+		docsNavCollapse.destroy();
+	}
+	docsNavCollapse.init();
+
+	// Slide Messages
+	if (mashery.globals.messages) {
+		slideMessages(mashery.globals.messages, mashery.globals.messagelinks || []);
+	}
+
+	// Registration form validation
+	formValidation('[action*="/member/register"]');
+
+}, false);
+
+// User Registration
+// The user registration page.
+portalOptions.labels.register = {
+  sidebar: '',
+	// The message above the form
+	main: 	'<p>There are two steps to getting started with Sportradar APIs:</p>' +
+			'<ul>' +
+				'<li>Register your account, creating a username that you’ll use to access your keys.</li>' +
+				'<li>Register an application to get a free trial API key for each sport or league you are interested in.</li>' +
+			'</ul>' +
+			'<p>This key identifies your account and application, and is required for any API calls.</p>' +
+			'<p>Once you have your keys, you can view our documentation to find the syntax used to call the Sportradar APIs. You don’t need to write any code to get started. Instead, you can use our API Sandbox to test those calls against our sports data.</p>' +
+      '<p>* Denotes a required field.</p>',
+};
+
+// Toggle IO Docs APIs and endpoints with query strings
+window.addEventListener('portalIODocsReady', function () {
+    toggleIODocs();
+}, false);
+//]]>
+</script>
+    <script src="https://developer.sportradar.com/files/main.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+        m$.init(portalOptions);
+</script>    
+
+</body></html>

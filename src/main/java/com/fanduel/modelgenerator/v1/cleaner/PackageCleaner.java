@@ -1,18 +1,24 @@
 package com.fanduel.modelgenerator.v1.cleaner;
 
 import com.fanduel.modelgenerator.utils.FileUtils;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.processing.Generated;
 import javax.lang.model.element.Modifier;
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -46,31 +52,48 @@ public class PackageCleaner {
 
     public void clean(String packageName) throws IOException {
         System.out.println("Starting process to clean generated code.");
+        log.info(getBasePackagePath());
+        log.info(packageName);
         File rootDirectory = new File(getBasePackagePath() + "/" + packageName);
         if (rootDirectory.listFiles() == null) {
+            log.info("No files found in {}.", rootDirectory.getAbsolutePath());
             return;
         }
 
-        for (File file : rootDirectory.listFiles()) {
-            try {
-                clean(file);
-            } catch (ClassNotFoundException e) {
-                log.error("Class {} cannot be accessed on the classpath. You will need to rebuild/restart the application to clean this folder.", e.getMessage());
-                e.printStackTrace();
-                return;
-            }
+        try {
+            clean(rootDirectory);
+        } catch (ClassNotFoundException e) {
+            log.error("Class {} cannot be accessed on the classpath. You will need to rebuild/restart the application to clean this folder.", e.getMessage());
+            e.printStackTrace();
+            return;
         }
         System.out.println("Code cleaning completed.");
     }
 
     private String getBasePackagePath() {
-        return outputDirectory + basePackage.replaceAll("\\.", "/");
+        return String.join("/", outputDirectory, basePackage.replaceAll("\\.", "/"));
     }
 
     private void clean(File rootDirectory) throws IOException, ClassNotFoundException {
-        final String targetPackage = rootDirectory.getParentFile().getName() + '.' + rootDirectory.getName();
+        final String targetPackage = rootDirectory.getName();
 
-        List<File> allFiles = FileUtils.getAllFilesFromRootDirectory(rootDirectory);
+        List<File> allFiles = FileUtils.getAllFilesInDirectory(rootDirectory);
+
+        // compile the java file
+        System.out.println("Compiling files under " + rootDirectory.getName());
+        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+        int result = compiler.run(null, null, null,
+                allFiles.stream()
+                        .filter(file -> file.getName().endsWith(".java"))
+                        .map(File::getAbsolutePath)
+                        .toArray((String[]::new)));
+        if (result == 0) {
+            System.out.println("Compilation successful.");
+        } else {
+            log.error("Compilation could not be completed, finished with exit code {}.", result);
+            throw new RuntimeException();
+        }
+
         URL url = new File(outputDirectory).toURI().toURL();
         URLClassLoader classLoader = URLClassLoader.newInstance(new URL[]{url});
 
@@ -97,12 +120,19 @@ public class PackageCleaner {
         }
         classLoader.close();
 
-        filesToDelete.addAll(FileUtils.getAllFilesFromRootDirectory(rootDirectory)
+        filesToDelete.addAll(FileUtils.getAllFilesInDirectory(rootDirectory)
                 .stream()
                 .filter(file -> file.getName().endsWith(".class"))
                 .collect(Collectors.toList()));
 
-        cleanUpModelClasses(classMap, targetPackage);
+        try {
+            log.info("Writing file to {}.", outputDirectory);
+            cleanUpModelClasses(classMap, targetPackage);
+            log.info("Cleaning classes successful");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
 
         for (File file : filesToDelete) {
             file.delete();
@@ -114,10 +144,16 @@ public class PackageCleaner {
             TypeSpec.Builder typeSpecBuilder = TypeSpec
                     .classBuilder(baseClassName)
                     .addModifiers(Modifier.PUBLIC)
+                    .addAnnotation(NoArgsConstructor.class)
                     .addAnnotation(Setter.class)
                     .addAnnotation(AnnotationSpec.builder(Accessors.class)
                             .addMember("chain", "true")
                             .build())
+                    .addAnnotation(AnnotationSpec.builder(JsonIgnoreProperties.class)
+                            .addMember("ignoreUnknown", "true")
+                            .build())
+                    .addAnnotation(AnnotationSpec.builder(EqualsAndHashCode.class).build())
+                    .addAnnotation(AnnotationSpec.builder(ToString.class).build())
                     .addAnnotation(
                             AnnotationSpec
                                     .builder(Generated.class)
@@ -149,7 +185,7 @@ public class PackageCleaner {
 
                 if (field.getType().equals(List.class)) {
                     methodSpecBuilder.returns(fieldType);
-                    methodSpecBuilder.addCode("return Optional.ofNullable(" + fieldName + ").orElse($T.emptyList());", Collections.class);
+                    methodSpecBuilder.addCode("return $1T.ofNullable(" + fieldName + ").orElse($2T.emptyList());", Optional.class, Collections.class);
                 } else {
                     methodSpecBuilder.returns(new ParameterizedType() {
                         @Override
@@ -167,7 +203,7 @@ public class PackageCleaner {
                             return Optional.class;
                         }
                     });
-                    methodSpecBuilder.addCode("return Optional.ofNullable(" + fieldName + ");");
+                    methodSpecBuilder.addCode("return $T.ofNullable(" + fieldName + ");", Optional.class);
                 }
                 MethodSpec methodSpec = methodSpecBuilder.build();
                 typeSpecBuilder.addMethod(methodSpec);
