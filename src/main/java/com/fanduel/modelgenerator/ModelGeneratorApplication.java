@@ -15,12 +15,7 @@ import java.util.Scanner;
 
 import static com.fanduel.modelgenerator.constants.Files.TEMP_DIRECTORY;
 
-//@SpringBootApplication
 public class ModelGeneratorApplication {
-
-//    public static void main(String[] args) {
-//        SpringApplication.run(ModelGeneratorApplication.class, args);
-//    }
 
     public static void main(String[] args) {
         List<RequestMetadata> requestMetadataList =
@@ -37,8 +32,8 @@ public class ModelGeneratorApplication {
                 .replaceAll("\\s", "");
         ResponseModelGenerator responseModelGenerator =
                 new JsonResponseModelGenerator(TEMP_DIRECTORY,
-                "com.fanduel.modelgenerator.generated." + folderName
-                        .toLowerCase(Locale.ROOT));
+                "com.fanduel.modelgenerator.generated." +
+                        folderName.toLowerCase(Locale.ROOT));
         responseMetadataList.forEach(responseModelGenerator::generateResponseModel);
         File outputDirectory = new File("temp");
         new ClientGeneratorImpl(folderName, "SportRadarClient", outputDirectory, "com.fanduel.modelgenerator.generated")
