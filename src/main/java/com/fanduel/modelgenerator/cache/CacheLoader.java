@@ -1,6 +1,6 @@
 package com.fanduel.modelgenerator.cache;
 
-import com.fanduel.modelgenerator.Files;
+import com.fanduel.modelgenerator.constants.Files;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NonNull;

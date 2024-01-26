@@ -7,16 +7,15 @@ import com.fanduel.modelgenerator.collector.request.CommandLineSportRadarRequest
 import com.fanduel.modelgenerator.collector.request.model.RequestMetadata;
 import com.fanduel.modelgenerator.collector.response.RequestExecutingResponseCollector;
 import com.fanduel.modelgenerator.collector.response.model.ResponseMetadata;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.File;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import static com.fanduel.modelgenerator.Files.TEMP_DIRECTORY;
+import static com.fanduel.modelgenerator.constants.Files.TEMP_DIRECTORY;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class ModelGeneratorApplication {
 
 //    public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.fanduel.modelgenerator;
+package com.fanduel.modelgenerator.constants;
 
 import java.io.File;
 
