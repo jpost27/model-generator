@@ -29,4 +29,7 @@ public class FileUtils {
     }
 
 
+    public static String packagePathToFilePath(String packagePath) {
+        return packagePath.replaceAll("\\.", "/");
+    }
 }

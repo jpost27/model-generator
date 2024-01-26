@@ -1,7 +1,11 @@
 package com.fanduel.modelgenerator.utils;
 
+import com.fanduel.modelgenerator.collector.request.model.RequestMetadata;
+import org.springframework.web.util.UriComponentsBuilder;
+
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 public class UrlUtils {
 
@@ -9,6 +13,12 @@ public class UrlUtils {
         String url = variableUrl.contains("?") ?
                 variableUrl.substring(0, variableUrl.indexOf("?")) : variableUrl;
         return extractVariables(url, '{', '}');
+    }
+
+    public static List<String> getPathSegments(String variableUrl) {
+        return UriComponentsBuilder.fromUriString(variableUrl)
+                .build()
+                .getPathSegments();
     }
 
     public static List<String> getRequestParamsNames(String variableUrl) {
@@ -34,4 +44,11 @@ public class UrlUtils {
         return variables;
     }
 
+    public static String getClientCommonBasePathFromUrls(List<String> urls) {
+        return urls.stream()
+                .map(url -> Optional.ofNullable(url).orElse(""))
+                .map(url -> url.contains("{") ? url.substring(0, url.indexOf("{")) : url)
+                .reduce(StringUtils::greatestCommonPrefix)
+                .orElse("");
+    }
 }

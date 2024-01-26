@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ClientGenerator {
 
-    void generateClient(@NonNull List<ResponseMetadata> responseMetadata, @NonNull File destinationFolder);
+    void generateClient(@NonNull List<ResponseMetadata> responseMetadata);
 
 }

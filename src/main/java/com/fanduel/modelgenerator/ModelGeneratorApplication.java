@@ -1,5 +1,6 @@
 package com.fanduel.modelgenerator;
 
+import com.fanduel.modelgenerator.codegen.ClientGeneratorImpl;
 import com.fanduel.modelgenerator.codegen.JsonResponseModelGenerator;
 import com.fanduel.modelgenerator.codegen.ResponseModelGenerator;
 import com.fanduel.modelgenerator.collector.request.CommandLineSportRadarRequestCollector;
@@ -13,13 +14,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
+import static com.fanduel.modelgenerator.Files.TEMP_DIRECTORY;
+
 @SpringBootApplication
 public class ModelGeneratorApplication {
 
 //    public static void main(String[] args) {
 //        SpringApplication.run(ModelGeneratorApplication.class, args);
 //    }
-    private static final File tempDirectory = new File("temp");
 
     public static void main(String[] args) {
         List<RequestMetadata> requestMetadataList =
@@ -31,14 +33,17 @@ public class ModelGeneratorApplication {
 
         System.out.print("Enter a name for the folder to generate: ");
         Scanner scanner = new Scanner(System.in);
-        final String folderName = scanner.nextLine();
+        final String folderName = scanner.nextLine()
+                .trim()
+                .replaceAll("\\s", "");
         ResponseModelGenerator responseModelGenerator =
-                new JsonResponseModelGenerator(tempDirectory,
+                new JsonResponseModelGenerator(TEMP_DIRECTORY,
                 "com.fanduel.modelgenerator.generated." + folderName
-                        .trim()
-                        .replaceAll("\\s", "")
                         .toLowerCase(Locale.ROOT));
         responseMetadataList.forEach(responseModelGenerator::generateResponseModel);
+        File outputDirectory = new File("temp");
+        new ClientGeneratorImpl(folderName, "SportRadarClient", outputDirectory, "com.fanduel.modelgenerator.generated")
+                .generateClient(responseMetadataList);
         scanner.close();
     }
 

@@ -1,5 +1,6 @@
 package com.fanduel.modelgenerator.cache;
 
+import com.fanduel.modelgenerator.Files;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NonNull;
@@ -18,16 +19,15 @@ import java.util.function.Supplier;
 @Slf4j
 public class CacheLoader {
 
-    private static final File cachePath = new File("cache");
     private static final ObjectMapper objectMapper = new ObjectMapper();
     static {
-        if (!cachePath.exists()) {
-            cachePath.mkdir();
+        if (!Files.CACHE_DIRECTORY.exists()) {
+            Files.CACHE_DIRECTORY.mkdir();
         }
     }
 
     public static <T> T loadOrFetch(@NonNull Cache cacheName, @NonNull TypeReference<T> tTypeReference, @NonNull Supplier<T> fetchFn) {
-        File cacheFile = new File(cachePath.getAbsolutePath() + "/" + cacheName);
+        File cacheFile = new File(Files.CACHE_DIRECTORY.getAbsolutePath() + "/" + cacheName);
         Optional<T> cachedData = readFromCache(cacheName, cacheFile, tTypeReference);
         if (cachedData.isPresent()) {
             return cachedData.get();
@@ -42,7 +42,7 @@ public class CacheLoader {
                                        @NonNull TypeReference<T> tTypeReference,
                                        @NonNull Function<I, T> fetchFn) {
         File cacheFile =
-                new File(cachePath.getAbsolutePath() + "/" + cacheName + "/" +
+                new File(Files.CACHE_DIRECTORY.getAbsolutePath() + "/" + cacheName + "/" +
                         Base64.getUrlEncoder().encodeToString(id.toString().getBytes()));
         Optional<T> cachedData = readFromCache(cacheName, cacheFile, tTypeReference);
         if (cachedData.isPresent()) {
