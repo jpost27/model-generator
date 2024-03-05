@@ -28,6 +28,11 @@ public class ModelGeneratorApplication {
                         new RequestExecutingResponseCollector()
                                 .getResponses(requestMetadataList);
 
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         System.out.print("Enter a name for the folder to generate: ");
         Scanner scanner = new Scanner(System.in);
         final String apiName = String.join("",
