@@ -51,4 +51,11 @@ public class UrlUtils {
                 .reduce(StringUtils::greatestCommonPrefix)
                 .orElse("");
     }
+
+    public static String replaceApiKey(String url, String replacement) {
+        return UriComponentsBuilder.fromUriString(url)
+                .replaceQueryParam("api_key", replacement)
+                .build()
+                .toUriString();
+    }
 }

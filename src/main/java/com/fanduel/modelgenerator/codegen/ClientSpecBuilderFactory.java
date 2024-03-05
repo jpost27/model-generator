@@ -21,7 +21,6 @@ import javax.lang.model.element.Modifier;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,7 +74,7 @@ public class ClientSpecBuilderFactory {
         return CodeBlock.builder()
                 .add(
                         new StringBuilder()
-                                .append("$1T uri = $2T.fromPath(API_BASE_PATH)")
+                                .append("$1T uri = $2T.fromUriString(API_BASE_PATH)")
                                 .append(System.lineSeparator())
                                 .append(".pathSegment(" + String.join(", ", pathSegments.toArray(String[]::new)) + ")")
                                 .append(System.lineSeparator())

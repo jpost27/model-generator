@@ -11,4 +11,8 @@ public class StringUtils {
         }
         return a.substring(0, minLength);
     }
+
+    public static String convertToPascalCase(String s) {
+        return s.substring(0, 1).toUpperCase() + s.substring(1);
+    }
 }

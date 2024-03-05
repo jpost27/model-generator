@@ -27,12 +27,16 @@ public class JsonResponseModelGenerator implements ResponseModelGenerator {
     @NonNull
     private final String generatedFilesPackageName;
 
-    public JsonResponseModelGenerator(File generationDirectory, @NonNull String generatedFilesPackageName) {
+    @NonNull
+    private final ResponseGenerationOptions options;
+
+    public JsonResponseModelGenerator(File generationDirectory, @NonNull String generatedFilesPackageName, ResponseGenerationOptions options) {
         this.generatedFilesPackageName = generatedFilesPackageName;
         if (!generationDirectory.exists()) {
             generationDirectory.mkdir();
         }
         this.generationDirectory = generationDirectory;
+        this.options = options;
     }
 
     @Override
@@ -86,13 +90,17 @@ public class JsonResponseModelGenerator implements ResponseModelGenerator {
             public SourceType getSourceType() {
                 return SourceType.JSON;
             }
+
+            @Override
+            public String getClassNamePrefix() {
+                return options.getModelPrefix() + requestName;
+            }
         };
 
         SchemaMapper mapper = new SchemaMapper(new RuleFactory(config, new Jackson2Annotator(config), new SchemaStore()), new SchemaGenerator());
         try {
             mapper.generate(
-                    jcodeModel,
-                    requestName + "Response",
+                    jcodeModel, "Response",
                     String.join(".", generatedFilesPackageName, packageName),
                     json);
             jcodeModel.build(generationDirectory);

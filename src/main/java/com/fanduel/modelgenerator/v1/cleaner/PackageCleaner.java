@@ -41,8 +41,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class PackageCleaner {
 
-    private final String
-            outputDirectory;
+    private final String outputDirectory;
     private final String basePackage;
 
     public PackageCleaner(String outputDirectory, String basePackage) {
@@ -234,9 +233,8 @@ public class PackageCleaner {
         if (clazzOpt.isPresent()) {
             return clazzOpt.get();
         }
-        if (field.getGenericType() instanceof ParameterizedType) {
-            ParameterizedType stringListType = (ParameterizedType) field.getGenericType();
-            Type[] genericTypeArr = stringListType.getActualTypeArguments();
+        if (field.getGenericType() instanceof ParameterizedType parameterizedType) {
+            Type[] genericTypeArr = parameterizedType.getActualTypeArguments();
             return new ParameterizedType() {
                 @Override
                 public Type[] getActualTypeArguments() {

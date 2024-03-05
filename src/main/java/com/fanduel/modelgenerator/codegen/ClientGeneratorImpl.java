@@ -2,6 +2,7 @@ package com.fanduel.modelgenerator.codegen;
 
 import com.fanduel.modelgenerator.collector.request.model.RequestMetadata;
 import com.fanduel.modelgenerator.collector.response.model.ResponseMetadata;
+import com.fanduel.modelgenerator.constants.Files;
 import com.fanduel.modelgenerator.utils.FileUtils;
 import com.fanduel.modelgenerator.utils.TypeUtils;
 import com.fanduel.modelgenerator.utils.UrlUtils;
@@ -87,11 +88,11 @@ public class ClientGeneratorImpl implements ClientGenerator {
             throw new RuntimeException();
         }
         log.info("Generating client " + generatedClientClassName);
-        File clientFile = generateClientInterface(requestMetadataList, requestName);
+        File clientFile = generateClientInterface(requestMetadataList, requestName.toLowerCase());
         log.info("Generated client file {}.", clientFile.getAbsolutePath());
         // Compile file
         log.info("Generating client implementation.");
-        generateClientImpl(requestMetadataList, requestName);
+        generateClientImpl(requestMetadataList, requestName.toLowerCase());
         log.info("{}Impl generated successfully.", generatedClientClassName);
 
         List<File> allClassFiles = FileUtils.getAllFilesInDirectory(rootDirectory)
@@ -114,11 +115,12 @@ public class ClientGeneratorImpl implements ClientGenerator {
     }
 
     private MethodSpec.Builder requestMetadataToAbstractMethodSpecBuilder(RequestMetadata requestMetadata, String packageName) {
-        String typeName = requestMetadata.requestName();
+        String packagePath = generationBasePackage + "." + packageName + "." + requestMetadata.requestName().toLowerCase();
+        String typeName = getResponseModelFileForRequest(packagePath, requestMetadata)
+                .getName().replace(".java", "");
         Class<?> baseClass;
         try {
-            baseClass = tempPackageClassLoader.loadClass(
-                    generationBasePackage + "." + packageName + "." + typeName.toLowerCase() + "." + typeName + "Response");
+            baseClass = tempPackageClassLoader.loadClass(packagePath + "." + typeName);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -127,7 +129,7 @@ public class ClientGeneratorImpl implements ClientGenerator {
                 .addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
                 .addJavadoc(
                         "Documentation sample: " +
-                                requestMetadata.exampleUrl() +
+                                UrlUtils.replaceApiKey(requestMetadata.exampleUrl(), "{your_api_key}") +
                                 Optional.ofNullable(requestMetadata.variableUrl())
                                         .map(variableUrl -> System.lineSeparator() +
                                                 "Variable URL: " +
@@ -187,11 +189,12 @@ public class ClientGeneratorImpl implements ClientGenerator {
     }
 
     private MethodSpec.Builder requestMetadataToMethodSpecBuilder(RequestMetadata requestMetadata, String packageName, String clientBasePath) {
-        String typeName = requestMetadata.requestName();
+        String packagePath = generationBasePackage + "." + packageName + "." + requestMetadata.requestName().toLowerCase();
+        String typeName = getResponseModelFileForRequest(packagePath, requestMetadata)
+                .getName().replace(".java", "");
         Class<?> baseClass;
         try {
-            baseClass = tempPackageClassLoader.loadClass(
-                    generationBasePackage + "." + packageName + "." + typeName.toLowerCase() + "." + typeName + "Response");
+            baseClass = tempPackageClassLoader.loadClass(packagePath + "." + typeName);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -226,6 +229,16 @@ public class ClientGeneratorImpl implements ClientGenerator {
                         .build());
         addRequiredParametersToMethodSpec(methodSpecBuilder, pathVariables, variableTypeMap);
         return methodSpecBuilder;
+    }
+
+    private File getResponseModelFileForRequest(String packagePath, RequestMetadata requestMetadata) {
+        return FileUtils.getAllFilesInDirectory(new File(Files.TEMP_DIRECTORY.getPath() +
+                        "/" +
+                        FileUtils.packagePathToFilePath(packagePath)))
+                .stream()
+                .filter(file -> file.getName().endsWith(requestMetadata.requestName() + "Response.java"))
+                .findFirst()
+                .orElseThrow();
     }
 
     private void addRequiredParametersToMethodSpec(
