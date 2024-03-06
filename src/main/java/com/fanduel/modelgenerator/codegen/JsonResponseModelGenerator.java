@@ -77,6 +77,11 @@ public class JsonResponseModelGenerator implements ResponseModelGenerator {
             }
 
             @Override
+            public boolean isIncludeAdditionalProperties() {
+                return false;
+            }
+
+            @Override
             public boolean isIncludeAllPropertiesConstructor() {
                 return false;
             }

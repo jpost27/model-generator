@@ -4,9 +4,12 @@ import com.fanduel.modelgenerator.utils.FileUtils;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.squareup.javapoet.AnnotationSpec;
+import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.ParameterizedTypeName;
+import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -28,6 +31,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -100,29 +104,14 @@ public class PackageCleaner {
                 .stream()
                 .filter(file -> file.getName().contains("__")).collect(Collectors.toCollection(LinkedList::new));
 
-        Map<String, List<Class<?>>> classMap = new HashMap<>();
-        for (File file : allFiles) {
-            String name = file.getName();
-            if (name.endsWith(".java")) {
-                String fileString = org.apache.commons.io.FileUtils.readFileToString(file, "UTF-8");
-                String packageName = fileString.substring(fileString.indexOf("package ") + 8, fileString.indexOf(";"));
+        Map<String, List<Class<?>>> classMap = getMapOfClassNameToListOfRelatedClasses(allFiles, classLoader);
 
-                // load the new class
-                Class<?> clazz = classLoader.loadClass(packageName + "." + name.split("\\.")[0]);
-
-                String key = clazz.getSimpleName().split("_")[0];
-                if (!classMap.containsKey(key)) {
-                    classMap.put(key, new LinkedList<>());
-                }
-                classMap.get(key).add(clazz);
-            }
-        }
         classLoader.close();
 
         filesToDelete.addAll(FileUtils.getAllFilesInDirectory(rootDirectory)
                 .stream()
                 .filter(file -> file.getName().endsWith(".class"))
-                .collect(Collectors.toList()));
+                .toList());
 
         try {
             log.info("Writing file to {}.", outputDirectory);
@@ -138,8 +127,54 @@ public class PackageCleaner {
         }
     }
 
+    private Map<String, List<Class<?>>> getMapOfClassNameToListOfRelatedClasses(Iterable<File> files, ClassLoader classLoader) throws IOException, ClassNotFoundException {
+        Map<String, List<Class<?>>> classMap = new HashMap<>();
+        for (File file : files) {
+            String name = file.getName();
+            if (name.endsWith(".java")) {
+                String fileString = org.apache.commons.io.FileUtils.readFileToString(file, "UTF-8");
+                String packageName = fileString.substring(fileString.indexOf("package ") + 8, fileString.indexOf(";"));
+
+                // load the new class
+                Class<?> clazz = classLoader.loadClass(packageName + "." + name.split("\\.")[0]);
+
+                String key = clazz.getSimpleName().split("_")[0];
+                if (!classMap.containsKey(key)) {
+                    classMap.put(key, new LinkedList<>());
+                } else {
+                    boolean hardConflict;
+                    int loopCount = 0;
+                    do {
+                        String currentKey = loopCount == 0 ? key : key + '_' + loopCount;
+                        if (!classMap.containsKey(currentKey)) {
+                            log.warn("Conflict detected for class {}. Renaming to {}.", key, currentKey);
+                            classMap.put(currentKey, new LinkedList<>());
+                        }
+                        Class<?> conflictingClass = classMap.getOrDefault(currentKey, new ArrayList<>()).stream()
+                                .findFirst()
+                                .orElse(null);
+                        if (conflictingClass == null) {
+                            classMap.put(currentKey, new LinkedList<>());
+                            break;
+                        }
+                        hardConflict = classesAreConflicting(clazz, conflictingClass);
+                        if (hardConflict) {
+                            loopCount++;
+                        }
+                    } while (hardConflict);
+                    key = loopCount == 0 ? key : key + '_' + loopCount;
+                }
+                classMap.get(key).add(clazz);
+            }
+        }
+        return classMap;
+    }
+
     private void cleanUpModelClasses(Map<String, List<Class<?>>> classMap, String targetPackage) {
         classMap.forEach((String baseClassName, List<Class<?>> classes) -> {
+            if (baseClassName.startsWith("SrMlbV7PlayerProfile")) {
+                int x = 0;
+            }
             TypeSpec.Builder typeSpecBuilder = TypeSpec
                     .classBuilder(baseClassName)
                     .addModifiers(Modifier.PUBLIC)
@@ -160,23 +195,29 @@ public class PackageCleaner {
                                     .build());
             Map<String, Field> fieldMap = new HashMap<>();
             classes.stream()
-                    .flatMap(clazz -> Arrays.stream(clazz.getFields()))
+                    .flatMap(clazz -> Arrays.stream(clazz.getDeclaredFields()))
                     .forEach(field -> {
                         String fieldName = field.getName();
                         fieldMap.put(fieldName, field);
                     });
-            fieldMap.forEach((fieldName, field) -> {
-                Type fieldType = getBaseTypeForField(classMap, field);
+            fieldMap.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByKey()).forEach(entry -> {
+                String fieldName = entry.getKey();
+                Field field = entry.getValue();
+                TypeName fieldType = getTypeNameForField(classMap, field, basePackage + "." + targetPackage);
                 FieldSpec.Builder fieldSpecBuilder = FieldSpec
                         .builder(fieldType, fieldName)
                         .addModifiers(Modifier.PRIVATE);
-                Arrays.stream(field.getDeclaredAnnotations()).forEach(annotation ->
-                        fieldSpecBuilder.addAnnotation(
-                                AnnotationSpec
-                                        .builder(annotation.annotationType())
-                                        .addMember("value", '"' + ((JsonProperty) annotation).value() + '"')
-                                        .build()
-                        ));
+                Arrays.stream(field.getDeclaredAnnotations())
+                        .filter(annotation -> annotation instanceof JsonProperty)
+                        .forEach(annotation ->
+                                fieldSpecBuilder.addAnnotation(
+                                        AnnotationSpec
+                                                .builder(annotation.annotationType())
+                                                .addMember("value", '"' + ((JsonProperty) annotation).value() + '"')
+                                                .build()
+                                ));
                 FieldSpec fieldSpec = fieldSpecBuilder.build();
                 typeSpecBuilder.addField(fieldSpec);
                 MethodSpec.Builder methodSpecBuilder = MethodSpec.methodBuilder("get" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1));
@@ -186,22 +227,7 @@ public class PackageCleaner {
                     methodSpecBuilder.returns(fieldType);
                     methodSpecBuilder.addCode("return $1T.ofNullable(" + fieldName + ").orElse($2T.emptyList());", Optional.class, Collections.class);
                 } else {
-                    methodSpecBuilder.returns(new ParameterizedType() {
-                        @Override
-                        public Type[] getActualTypeArguments() {
-                            return new Type[]{fieldType};
-                        }
-
-                        @Override
-                        public Type getRawType() {
-                            return Optional.class;
-                        }
-
-                        @Override
-                        public Type getOwnerType() {
-                            return Optional.class;
-                        }
-                    });
+                    methodSpecBuilder.returns(ParameterizedTypeName.get(ClassName.get(Optional.class), fieldType));
                     methodSpecBuilder.addCode("return $T.ofNullable(" + fieldName + ");", Optional.class);
                 }
                 MethodSpec methodSpec = methodSpecBuilder.build();
@@ -224,52 +250,63 @@ public class PackageCleaner {
         });
     }
 
-    private Type getBaseTypeForField(Map<String, List<Class<?>>> classMap, Field field) {
-        String name = field.getType().getSimpleName().split("_")[0];
-        Optional<Class<?>> clazzOpt = classMap.getOrDefault(name, new LinkedList<>())
-                .stream()
-                .filter(clazz -> clazz.getSimpleName().equals(name))
-                .findAny();
-        if (clazzOpt.isPresent()) {
-            return clazzOpt.get();
+    private TypeName getTypeNameForField(Map<String, List<Class<?>>> classMap, Field field, String packageName) {
+        Optional<TypeName> typeName = getTypeNameForType(classMap, field.getGenericType(), packageName);
+        if (typeName.isPresent()) {
+            return typeName.get();
         }
         if (field.getGenericType() instanceof ParameterizedType parameterizedType) {
             Type[] genericTypeArr = parameterizedType.getActualTypeArguments();
-            return new ParameterizedType() {
-                @Override
-                public Type[] getActualTypeArguments() {
-                    Type[] arr = new Type[genericTypeArr.length];
-                    for (int index = 0; index < arr.length; index++) {
-                        arr[index] = getBaseTypeForType(classMap, genericTypeArr[index]);
-                    }
-                    return arr;
-                }
-
-                @Override
-                public Type getRawType() {
-                    return field.getType();
-                }
-
-                @Override
-                public Type getOwnerType() {
-                    return null;
-                }
-            };
+            TypeName[] typeNameArr = Arrays.stream(genericTypeArr).map(type -> getTypeNameForType(classMap, type, packageName).orElse(TypeName.get(Object.class))).toArray(TypeName[]::new);
+            return ParameterizedTypeName.get(ClassName.get(field.getType()), typeNameArr);
         }
-        return field.getGenericType();
+        return ClassName.get(field.getGenericType());
     }
 
-    private Type getBaseTypeForType(Map<String, List<Class<?>>> classMap, Type type) {
+    private Optional<TypeName> getTypeNameForType(Map<String, List<Class<?>>> classMap, Type type, String packageName) {
         String[] typeNameArr = type.getTypeName().split("\\.");
-        String name = typeNameArr[typeNameArr.length - 1].split("_")[0];
-        Optional<Class<?>> clazzOpt = classMap.getOrDefault(name, new LinkedList<>())
-                .stream()
-                .filter(clazz -> clazz.getSimpleName().equals(name))
+        String name = typeNameArr[typeNameArr.length - 1];
+        Optional<Map.Entry<String, List<Class<?>>>> nameClassesEntry = classMap.entrySet().stream()
+                .filter(entry -> entry.getValue().stream().anyMatch(clazz -> clazz.getSimpleName().equals(name)))
                 .findAny();
-        if (clazzOpt.isPresent()) {
-            return clazzOpt.get();
-        } else {
-            return type;
+
+        if (nameClassesEntry.isPresent()) {
+            String key = nameClassesEntry.get().getKey();
+            return Optional.of(ClassName.get(packageName, key));
         }
+        return Optional.empty();
+    }
+
+    private boolean classesAreConflicting(Class<?> clazz, Class<?> conflictingClass) {
+        boolean hardConflict = false;
+        float minSimilarityPercentage = 66.67F;
+        // get fields for clazz as a set of entries of field name to type
+        Map<String, Class<?>> clazzFieldMap = Arrays.stream(clazz.getDeclaredFields()).collect(Collectors.toMap(Field::getName, Field::getType));
+        Map<String, Class<?>> conflictingClassFieldMap = Arrays.stream(conflictingClass.getDeclaredFields()).collect(Collectors.toMap(Field::getName, Field::getType));
+
+        // check if the fields are similar
+        int clazzFieldCount = clazzFieldMap.size();
+        int conflictingFieldCount = conflictingClassFieldMap.size();
+        int commonFieldsCount = 0;
+        // remove common fields
+        for (Map.Entry<String, Class<?>> fieldNameTypeEntry : conflictingClassFieldMap.entrySet()) {
+            if (clazzFieldMap.containsKey(fieldNameTypeEntry.getKey())) {
+                if (!clazzFieldMap.get(fieldNameTypeEntry.getKey()).getSimpleName().split("_")[0].equals(fieldNameTypeEntry.getValue().getSimpleName().split("_")[0])) {
+                    hardConflict = true;
+                    log.info("Field {} in class {} conflicts with field {} in class {}.", fieldNameTypeEntry.getKey(), clazz.getSimpleName(), fieldNameTypeEntry.getKey(), conflictingClass.getSimpleName());
+                    break;
+                } else {
+                    clazzFieldMap.remove(fieldNameTypeEntry.getKey());
+                    commonFieldsCount++;
+                }
+            }
+        }
+        if (commonFieldsCount < 1 || (clazzFieldMap.size() > 3 && (((float) commonFieldsCount / (float) clazzFieldCount) * 100) < minSimilarityPercentage)) {
+            hardConflict = true;
+        }
+        if (commonFieldsCount < 1 || (conflictingClassFieldMap.size() > 3 && (((float) commonFieldsCount / (float) conflictingFieldCount) * 100) < minSimilarityPercentage)) {
+            hardConflict = true;
+        }
+        return hardConflict;
     }
 }
