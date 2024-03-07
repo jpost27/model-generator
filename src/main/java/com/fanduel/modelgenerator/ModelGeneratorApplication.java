@@ -23,7 +23,6 @@ public class ModelGeneratorApplication {
     public static void main(String[] args) {
         List<RequestMetadata> requestMetadataList =
                 new CommandLineSportRadarRequestCollector().getRequests();
-
         List<ResponseMetadata> responseMetadataList =
                         new RequestExecutingResponseCollector()
                                 .getResponses(requestMetadataList);

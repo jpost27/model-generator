@@ -172,9 +172,6 @@ public class PackageCleaner {
 
     private void cleanUpModelClasses(Map<String, List<Class<?>>> classMap, String targetPackage) {
         classMap.forEach((String baseClassName, List<Class<?>> classes) -> {
-            if (baseClassName.startsWith("SrMlbV7PlayerProfile")) {
-                int x = 0;
-            }
             TypeSpec.Builder typeSpecBuilder = TypeSpec
                     .classBuilder(baseClassName)
                     .addModifiers(Modifier.PUBLIC)

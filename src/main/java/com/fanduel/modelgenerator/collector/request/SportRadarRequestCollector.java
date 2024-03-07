@@ -72,7 +72,7 @@ public abstract class SportRadarRequestCollector implements RequestCollector {
             } else if (element.nodeName().equals("pre") && !element.select(".language-shell").isEmpty()) {
                 element = element.selectFirst(".shell");
                 if (element != null) {
-                    requestMetadata.setSampleUrl(element.text());
+                    requestMetadata.setSampleUrl(element.text().replace("f45963f1-0379-45da-9e2b-c6a099910a35", "f2c07e82-71e8-4c76-962b-3a7739a11626"));
                 }
             } else if (element.nodeName().equals("p") && requestMetadata != null && !element.select("code").isEmpty()) {
                 requestMetadata.setVariableUrl(element.text());
