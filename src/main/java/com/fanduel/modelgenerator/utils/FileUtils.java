@@ -6,7 +6,10 @@ import java.util.List;
 
 public class FileUtils {
 
-    public static List<File> getAllFilesFromRootDirectory(File rootDirectory) {
+    public static List<File> getAllFilesInDirectory(File rootDirectory) {
+        if (!rootDirectory.isDirectory()) {
+            throw new IllegalArgumentException("Argument must be a directory: " + rootDirectory.getAbsolutePath());
+        }
         LinkedList<File> files = new LinkedList<>(List.of(rootDirectory));
         List<File> allFiles = new LinkedList<>();
         while (!files.isEmpty()) {
@@ -26,4 +29,7 @@ public class FileUtils {
     }
 
 
+    public static String packagePathToFilePath(String packagePath) {
+        return packagePath.replaceAll("\\.", "/");
+    }
 }

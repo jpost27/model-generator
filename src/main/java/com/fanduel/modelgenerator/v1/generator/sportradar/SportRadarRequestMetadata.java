@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Data
@@ -111,11 +112,20 @@ public class SportRadarRequestMetadata {
 //        for (String apiBasePath : apiBasePaths) {
 //            value = value.replaceFirst(apiBasePath, "https://goalpost-gateway.int.use1.pdm-dev.com/sr/");
 //        }
-
+        Optional<String> apiKey = Optional.of(value)
+                .map(String::toLowerCase)
+                .map(url ->
+                        url.contains("/nfl/") ? "z8dmcnupptpbjyan547bxerk" :
+                                url.contains("/nba/") ? "mjjhsep635gjpy847paxhvjm" :
+                                        url.contains("/golf/") ? "48fmbxmtyguc6camc8zey2na" :
+                                                url.contains("/mlb/") ? "ya4nzq583xtt28zr3kxmf5f4" :
+                                                        url.contains("/nhl/") ? "6rkfrqbt99rq9swkterhp74z" :
+                                                                null);
+        if (apiKey.isEmpty()) {
+            throw new RuntimeException("No key registered for this league. Support will be added in the future.");
+        }
         return UriComponentsBuilder.fromUriString(value)
-//                .replaceQueryParam("api_key", "z8dmcnupptpbjyan547bxerk") // NFL
-//                .replaceQueryParam("api_key", "mjjhsep635gjpy847paxhvjm") // NBA
-                .replaceQueryParam("api_key", "48fmbxmtyguc6camc8zey2na") // GOLF
+                .replaceQueryParam("api_key", apiKey.orElse("null"))
                 .toUriString();
     }
 
